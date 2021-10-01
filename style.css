@@ -76,3 +76,7 @@ button:hover {
 .hard {
   border-color: red;
 }
+
+.correct {
+  background-color: rgb(16, 194, 16);
+}

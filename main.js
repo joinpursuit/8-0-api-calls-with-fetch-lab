@@ -26,24 +26,44 @@ function makeCard(object) {
   button.textContent = "Show Answer";
   button.addEventListener("click", (event) => {
     answer.classList.toggle("hidden");
+    rightAnswerChoice.classList.toggle("correct");
   });
   const answer = document.createElement("p");
   answer.classList.add("hidden");
   answer.innerHTML = object.correct_answer;
+  //adding multiple choice selection
+  const multipleChoice = document.createElement("ol");
+  multipleChoice.type = "A";
+  const rightAnswerChoice = document.createElement("li");
+  // rightAnswerChoice.classList.add('correct')
+  rightAnswerChoice.textContent = object.correct_answer;
+  object.incorrect_answers.forEach((answer) => {
+    const newChoice = document.createElement("li");
+    newChoice.innerHTML = answer;
+    multipleChoice.append(newChoice);
+  });
+  multipleChoice.append(rightAnswerChoice);
+  //adding everything to the article object
   article.append(difficulty);
   article.append(category);
   article.append(question);
+  article.append(multipleChoice);
   article.append(button);
   article.append(answer);
   return article;
 }
-
+//adding functionality to the get new questions button
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
-  document.querySelectorAll("article").forEach((card) => card.remove());
+  let requestURL = "https://opentdb.com/api.php?amount=";
+  requestURL += event.target.trivia_amount.value;
   if (event.target.trivia_category.value !== "any") {
-    apiFetch(baseURL + "&category=" + event.target.trivia_category.value);
-  } else {
-    apiFetch(baseURL);
+    requestURL += "&category=" + event.target.trivia_category.value;
   }
+  if (event.target.trivia_difficulty.value !== "any") {
+    requestURL += "&difficulty=" + event.target.trivia_difficulty.value;
+  }
+  console.log(requestURL);
+  document.querySelectorAll("article").forEach((card) => card.remove());
+  apiFetch(requestURL);
 });
