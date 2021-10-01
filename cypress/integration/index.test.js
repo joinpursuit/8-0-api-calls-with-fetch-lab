@@ -16,6 +16,6 @@ describe("Index", () => {
   it("expands a card when clicked", () => {
     cy.get(".card").first().not("contain.text", "Central Processing Unit");
     cy.get(".card button").first().click();
-    cy.get(".card").first().should("contain.text", "Central Processing Unit");
+    cy.get(".card p").eq(1).filter(":visible").should("have.length", 1);;
   });
 });
