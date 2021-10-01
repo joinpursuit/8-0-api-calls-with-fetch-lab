@@ -1,17 +1,5 @@
-    let arr;
-    
-    const main = document.querySelector("main")
-    fetch("https://opentdb.com/api.php?amount=10")
-    .then(e => e.json())
-    .then(x => x.results)
-    .then(y => {
-        arr = y
-        callMe()
-    })
-
-    
- const callMe = () => {  
-    console.log(arr[0])
+const callMe = ({ results }) => {  
+    console.log(results)
 
     for(let i = 0; i < 10; i++){
         const article = document.createElement("article")
@@ -28,11 +16,11 @@
         article.append(button)
         article.append(p2)
 
-        // console.log(arr[i]) 
-        h2.textContent = arr[i].category
-        p.textContent = arr[i].question
+        // console.log(results[i]) 
+        h2.textContent = results[i].category
+        p.textContent = results[i].question
         button.textContent = "Answer"
-        p2.textContent = arr[i].correct_answer
+        p2.textContent = results[i].correct_answer
         
     }
 
@@ -46,3 +34,8 @@
         })
     })
 }
+
+const main = document.querySelector("main")
+    fetch("https://opentdb.com/api.php?amount=10")
+    .then(e => e.json())
+    .then(callMe)
