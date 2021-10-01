@@ -66,3 +66,13 @@ button:hover {
 .hidden {
   display: none;
 }
+
+.easy {
+  border-color: green;
+}
+.medium {
+  border-color: yellow;
+}
+.hard {
+  border-color: red;
+}
