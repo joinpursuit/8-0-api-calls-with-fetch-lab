@@ -4,18 +4,24 @@ const BASE_URL = "https://opentdb.com/api.php?amount=10"
 document.querySelector("form").addEventListener("submit", (event) => {
     event.preventDefault();
 
+    document.querySelectorAll(".card").forEach((card) => {
+        card.remove()
+    })
+    
     fetch(BASE_URL)
-        .then((response) => response.json())
-        //CHeck json object keys and values 
-        // .then(console.log)
-        
-        //Create 10 cards  
-        .then((jsonObject) => {
-            jsonObject.results.forEach((object) => {
-                createCard(object)
-            })
-        })   
-        .catch(createError)
+    .then((response) => response.json())
+    //CHeck json object keys and values 
+    // .then(console.log)
+    
+    //Create 10 cards  
+    .then(({results}) => {
+        results.forEach((object) => {
+            createCard(object)
+        })
+    })   
+    .catch(createError)
+
+    event.target.reset();   
 })
 
 
@@ -53,8 +59,9 @@ function createCard(object) {
     button.addEventListener("click", () => {
         correct.classList.toggle("hidden")
     })
-    
+
     document.querySelector("main").append(article)
+    
 }
 
 function createError(message) {
