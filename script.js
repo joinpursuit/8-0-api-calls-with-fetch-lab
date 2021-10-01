@@ -5,26 +5,39 @@ fetch("https://opentdb.com/api.php?amount=10")
     .then((data)=>{
         console.log(data);
 
-        /* create trivia question elements, to format */
-        let triviaCard = document.createElement("article");
-        let triviaCategory = document.createElement("h2");
-        let triviaQuestion = document.createElement("p");
-        let answerButton = document.createElement("button");
-        let correctAnswer = document.createElement("p");
-        triviaCard.setAttribute("class", "card");
-        correctAnswer.setAttribute("class", "hidden");
-        triviaCategory.textContent = "CATEGORY";
-        triviaQuestion.textContent = "QUESTION";
-        answerButton.textContent = "Show Answer";
-        correctAnswer.textContent = "CORRECT ANSWER";
+        // get the key of `results` from the fetch data
+        let questionList = data.results;
+        console.log(questionList);
 
-        /* format card - all siblings of `triviaCard` */
-        triviaCard.append(triviaCategory);
-        triviaCard.append(triviaQuestion);
-        triviaCard.append(answerButton);
-        triviaCard.append(correctAnswer);
+        // create a question, then add it
+        for (let askQuestion of questionList){
+            /* create trivia question elements, to format */
+            let triviaCard = document.createElement("article");
+            let triviaCategory = document.createElement("h2");
+            let triviaQuestion = document.createElement("p");
+            let answerButton = document.createElement("button");
+            let correctAnswer = document.createElement("p");
+            triviaCard.setAttribute("class", "card");
+            correctAnswer.setAttribute("class", "hidden");
+            triviaCategory.textContent = askQuestion.category;
+            triviaQuestion.innerHTML = askQuestion.question; // innerHTML
+            answerButton.textContent = "Show Answer";
+            correctAnswer.textContent = askQuestion.correct_answer;
+    
+            /* format card - all siblings of `triviaCard` */
+            triviaCard.append(triviaCategory);
+            triviaCard.append(triviaQuestion);
+            triviaCard.append(answerButton);
+            triviaCard.append(correctAnswer);
+            
+            // console.log(triviaCard); // test in console - yes, it matches format
         
-        // console.log(triviaCard); // test in console - yes, it matches format
+            // add trivia card to `mainCentered`
+            let mainCentered = document.querySelector(".centered");
+            mainCentered.append(triviaCard);        
+        }
+
+
 
     })
     .catch((err)=>{
