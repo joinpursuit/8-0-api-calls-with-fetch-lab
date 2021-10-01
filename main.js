@@ -13,6 +13,7 @@ function apiFetch(url) {
 }
 apiFetch(baseURL);
 function makeCard(object) {
+  //card object and all it's pieces, ordered at the end
   const article = document.createElement("article");
   article.classList.add("card");
   article.classList.add(object.difficulty);
@@ -36,18 +37,24 @@ function makeCard(object) {
   multipleChoice.type = "A";
   const rightAnswerChoice = document.createElement("li");
   // rightAnswerChoice.classList.add('correct')
-  rightAnswerChoice.textContent = object.correct_answer;
+  rightAnswerChoice.innerHTML = object.correct_answer;
   object.incorrect_answers.forEach((answer) => {
     const newChoice = document.createElement("li");
     newChoice.innerHTML = answer;
     multipleChoice.append(newChoice);
   });
   multipleChoice.append(rightAnswerChoice);
+  //shuffle test
+  let shuffle = document.createElement("ol");
+  for (let i = multipleChoice.children.length; i > 0; i--) {
+    shuffle.append(multipleChoice.children[(Math.random() * i) | 0]);
+  }
   //adding everything to the article object
   article.append(difficulty);
   article.append(category);
   article.append(question);
-  article.append(multipleChoice);
+  //   article.append(multipleChoice);
+  article.append(shuffle);
   article.append(button);
   article.append(answer);
   return article;
