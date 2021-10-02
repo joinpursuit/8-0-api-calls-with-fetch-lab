@@ -41,7 +41,7 @@ fetch("https://opentdb.com/api.php?amount=10")
             answerButton.addEventListener("click", (e)=>{
                 e.preventDefault();
                 console.log("Button click");
-                triviaCard.append(correctAnswer.innerHTML);
+                correctAnswer.classList.toggle("hidden");
             })
             
         }
