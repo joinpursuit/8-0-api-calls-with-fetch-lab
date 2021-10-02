@@ -11,8 +11,10 @@ form.addEventListener("submit", (e)=>{
     fetch(URL)
         .then((res)=> res.json()) //convert "res" to JSON
         .then((data => {
+
             //For loop or For Each  
             data.results.forEach(el => {
+                //console.log("Data results",el)
                 //create elements
                 let articleTag = document.createElement("article");
                 let h2Tag =document.createElement("h2");
@@ -26,21 +28,30 @@ form.addEventListener("submit", (e)=>{
 
                 //set text content within elements
                 buttonTag.textContent = "Show Answer";
-                questionTag.textContent = el.question;
+                questionTag.innerHTML = el.question;
                 h2Tag.textContent = el.category;
 
                 //establish parent-child relationship 
-                articleTag.append( h2Tag, questionTag, buttonTag, answerTag);
-                main.append(articleTag);
+                articleTag.append(h2Tag, questionTag, buttonTag, answerTag);
+                main.append(articleTag);            
 
+                
+                if (el.difficulty === "medium"){
+                    articleTag.setAttribute("style","border: solid yellow")                      
+                }
+                else if (el.difficulty === "hard"){
+                    articleTag.setAttribute("style","border: solid red")                      
+                }
                 //add event listener on "SHOW ANS" button element
-                buttonTag.addEventListener("click", (e) =>{
+                buttonTag.addEventListener("click", () =>{
                     //remove hidden tag from answer                   
                     answerTag.classList.remove("hidden");
                     //set text content as correct answer
-                    answerTag.textContent = el["correct_answer"];
-                });
+                    answerTag.textContent = el.correct_answer;
+                });            
             });
-        }))
-});
+        })).catch((err)=>{
+            console.log(err)})
+})
 
+// [ ] The API returns a "difficulty" key which categorizes the question based on how difficult it is. Display this difficult on the page through both text and CSS. For example, you may change the border color of the .card element to yellow if it is a medium difficulty question.
