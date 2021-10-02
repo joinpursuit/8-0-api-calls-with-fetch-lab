@@ -12,7 +12,10 @@ const removeJunk = (str) => {
 }
 
 fetch("https://opentdb.com/api.php?amount=10&category=10&difficulty=easy&type=multiple")
-    
+    .then((response) => response.json())
+    .then(function(trivia_questions) {
+        let questions = trivia_questions.results;
+    })
 
 
 
