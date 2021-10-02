@@ -1,0 +1,3 @@
+const removeJunk = (str) => {
+    
+}
