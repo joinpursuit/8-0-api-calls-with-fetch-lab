@@ -36,20 +36,59 @@ fetch("https://opentdb.com/api.php?amount=10")
             let mainCentered = document.querySelector("main.centered");
             mainCentered.append(triviaCard);            
             
-            
             // add event listener to `answerButton` when clicked, to show the answer. Toggle the answer to hide/show
             answerButton.addEventListener("click", (e)=>{
                 e.preventDefault();
                 correctAnswer.classList.toggle("hidden");
             })
+
+            /* START - Show "difficulty" key */
+            let difficultyLevel = document.createElement("div");
+            let easy = document.createElement("div");
+            let medium = document.createElement("div");
+            let hard = document.createElement("div");
+            difficultyLevel.setAttribute("class", "difficulty-key");
+            easy.setAttribute("class", "easy");
+            medium.setAttribute("class", "medium");
+            hard.setAttribute("class", "hard");
+
+            /* Set `textContent` of each difficulty */
+            easy.textContent = "Easy";
+            medium.textContent = "Medium";
+            hard.textContent = "Hard";
+
+            /* Set `style` of each difficulty */
+            easy.style.color = "green";
+            medium.style.color = "yellow";
+            hard.style.color = "red";
+
+            // determine the question's difficulty level
+            difficultyLevel = askQuestion.difficulty;
+            console.log(difficultyLevel);
+         
+            /* add difficulty key to page:
+            if easy... if medium... if hard... append `easy`, `medium`, or `hard` */
+            if (difficultyLevel === "easy"){
+                triviaQuestion.append(easy);
+            }
+            if (difficultyLevel === "medium"){
+                triviaQuestion.append(medium);
+            }
+            if (difficultyLevel === "hard"){
+                triviaQuestion.append(hard);
+            }
+            /* END - Show "difficulty" key */
         }
+
+
+
         /* START fetch another API */
         return fetch("https://api.imgflip.com/get_memes")
         .then((response)=>{
             return response.json();
         })
         .then((memeData)=>{
-            console.log("memedata", memeData);
+            // console.log("memedata", memeData);
             let memeImg = document.createElement("img");
 
             // let memeListed = memeData.data;
@@ -74,11 +113,11 @@ fetch("https://opentdb.com/api.php?amount=10")
                 /* All of the memes:
                 the memes are in an <img src> tag */
                 let memeImgToPlace = document.createElement("img");
-                console.log("memeUrlFormat", memeImg.src);
+                // console.log("memeUrlFormat", memeImg.src);
                 memeImgToPlace.setAttribute("src", memeUrlFormat);
                 // memeImgToPlace.setAttribute("alt", "meme URL image");
                 // memeImgToPlace.setAttribute("title", memeUrl + ".title");
-                console.log("memeImgToPlace", memeImgToPlace);
+                // console.log("memeImgToPlace", memeImgToPlace);
 
                 /* Attach `memeImgToPlace` to the page */
                 let memeBox = document.querySelector(".memebox");
