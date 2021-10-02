@@ -16,7 +16,7 @@ fetch("https://opentdb.com/api.php?amount=10&category=10&difficulty=easy&type=mu
     .then(function(trivia_questions) {
         let questions = trivia_questions.results;
         for(let quest of questions) {
-            
+            const art = document.createElement("article");
         }
     })
 
