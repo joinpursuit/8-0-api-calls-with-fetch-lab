@@ -1,12 +1,8 @@
 
-const callMe = ({ results }) => {  
-    const main = document.querySelector("main")
-
-    // console.log(results)
-
+const makeCards = ({ results }) => {  
     for(const result of results){
         console.log(result)
-        main.innerHTML += `<article class="card">
+        document.querySelector("main").innerHTML += `<article class="card">
         <h2>${result.category}</h2>
         <p>${result.question}</p>
         <button>Show Answer</button>
@@ -14,9 +10,7 @@ const callMe = ({ results }) => {
       </article>`
     }
 
-    const allArticles = document.querySelectorAll('article');
-
-    allArticles.forEach(article => {
+    document.querySelectorAll('article').forEach(article => {
         article.querySelector("button")
         .addEventListener('click', () => {
             const answer = article.querySelector('article > p:last-child')
