@@ -1,7 +1,7 @@
 
 let main=document.querySelector("main");
 let form=document.querySelector('form');
-
+let section=document.querySelector('section');
 form.addEventListener("submit", e => {
     e.preventDefault();
     fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=boolean")
@@ -27,9 +27,37 @@ form.addEventListener("submit", e => {
                     })
                     article.append(h2, p, button, p2);
                     main.append(article);
+                    
+
                 })
+                let p3=document.createElement("p");
+                p3.classList.add("level");
+                p3.textContent="Difficulty: "+results[0].difficulty;
+                section.after(p3);
+                let cardArr=document.querySelectorAll('.card');
+                cardArr.forEach(card=>{
+                    if(results[0].difficulty==="easy") {
+                        let level=document.querySelector(".level");
+                        level.style.color="#0000b2";
+                        level.style.backgroundColor="#808080";
+                        level.style.width="150px";
+                        level.style.padding="20px";
+                        level.style.position="relative";
+                        level.style.left="180px";
+                        card.setAttribute("style","border: 5px solid #0000b2;")
+                    }
+                    if(results[0].difficulty==="medium") {
+                        let level=document.querySelector(".level");
+                        level.style.color="#0000ff";
+                        level.style.backgroundColor="#808080";
+                        level.style.width="150px";
+                        level.style.padding="20px";
+                        level.style.position="relative";
+                        level.style.left="180px";
+                        card.setAttribute("style","border: 10px solid #0000ff;")
+                    }
                 
-            
+                })
                 
             })
 
