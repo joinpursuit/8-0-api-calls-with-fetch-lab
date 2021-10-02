@@ -31,4 +31,16 @@ document.querySelector('form')
       })
     }
   }
+
+
+
+  const createErrorMessage = (message) => { 
+    const section = document.createElement("section");// Creates a section element
+    section.classList.add("error"); //adds 'error' as a class for the section and assigns text content
+    section.innerHTML = ` 
+      <p>There was an error!</p>
+      <p class="message">${message}</p>`
+      document.querySelector('form').after(section) // appends section right after form tag
+  }
+  
   
