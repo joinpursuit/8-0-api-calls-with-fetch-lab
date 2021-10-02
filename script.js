@@ -37,10 +37,9 @@ fetch("https://opentdb.com/api.php?amount=10")
             mainCentered.append(triviaCard);            
             
             
-            // add event listener to `answerButton` when clicked, to show the answer
+            // add event listener to `answerButton` when clicked, to show the answer. Toggle the answer to hide/show
             answerButton.addEventListener("click", (e)=>{
                 e.preventDefault();
-                console.log("Button click");
                 correctAnswer.classList.toggle("hidden");
             })
             
