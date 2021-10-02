@@ -33,13 +33,19 @@ fetch("https://opentdb.com/api.php?amount=10")
             // console.log(triviaCard); // test in console - yes, it matches format
         
             // add trivia card to `mainCentered`
-            let mainCentered = document.querySelector(".centered");
-            mainCentered.append(triviaCard);        
+            let mainCentered = document.querySelector("main.centered");
+            mainCentered.append(triviaCard);            
         }
 
 
-
+        // add event listener to `answerButton` when clicked, to show the answer
+        
+        
+        
     })
     .catch((err)=>{
+        // let errorMessage = document.createElement("div");
+        // errorMessage.textContent = "Error message";
+        // mainCentered.append(errorMessage);
         console.log(err);
     })
