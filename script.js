@@ -5,7 +5,10 @@ const removeJunk = (str) => {
         "&eacute;": "e",        
     };
 
-    const regex = /(&quot;|&#039;|&eacute;)/g
+    const regex = /(&quot;|&#039;|&eacute;)/g;
+    return str.replace(regex, (junk) => {
+        return trash[junk];
+    });
 }
 
 
