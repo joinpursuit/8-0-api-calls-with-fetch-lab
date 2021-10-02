@@ -59,7 +59,7 @@ fetch("https://opentdb.com/api.php?amount=10")
 
             /* Set `style` of each difficulty */
             easy.style.color = "green";
-            medium.style.color = "yellow";
+            medium.style.color = "gold";
             hard.style.color = "red";
 
             // determine the question's difficulty level
