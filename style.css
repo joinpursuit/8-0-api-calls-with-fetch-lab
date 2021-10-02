@@ -51,6 +51,8 @@ button {
   cursor: pointer;
   font-weight: bold;
   padding: 10px;
+
+  margin: 10px;
 }
 
 button:hover {
@@ -61,6 +63,20 @@ button:hover {
 .card {
   border: 3px solid #4f7d5d;
   padding: 25px;
+}
+
+.card1 {
+  border-radius: 15px;
+}
+
+.card2 {
+  border: 3px solid yellow;
+  border-radius: 15px;
+}
+
+.card3 {
+  border: 3px solid red;
+  border-radius: 15px;
 }
 
 .hidden {
