@@ -12,7 +12,9 @@ document.querySelector("form").addEventListener("submit", (event) => {
                 document.querySelector("main").append(addTriviaQ(object))
             })
         })
-        .catch(displayError)
+        .catch((error) => {
+            document.querySelector("main").append(displayError(error))
+        })
         
     event.target.reset();
 })
@@ -46,20 +48,20 @@ function addTriviaQ(object) {
     return article
 }
 
-const displayError = (error) => {
+function displayError(error) {
 
-    const main = document.querySelector("main")
     const article = document.createElement("article")
     article.classList.add("error")
     article.style.display = "block"
-    main.append(article)
 
     const paragraph = document.createElement("p")
     paragraph.textContent = "Something went wrong!"
+    article.append(paragraph)
 
     const errorMessage = document.createElement("p");
     errorMessage.classList.add("error");
     errorMessage.textContent = error;
+    article.append(errorMessage)
 
-    document.querySelector("article").append(paragraph, errorMessage);
+    return article
 }
