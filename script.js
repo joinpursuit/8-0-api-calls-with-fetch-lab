@@ -18,6 +18,10 @@ fetch("https://opentdb.com/api.php?amount=10&category=10&difficulty=easy&type=mu
         for(let quest of questions) {
             const art = document.createElement("article");
             art.setAttribute("calss", "card");
+            `<h2>${quest.category}</h2>
+             <p>${quest.question}</p>
+             <button>Show Answer</button>
+             <p class = "hidden">${quest.correct_answer}</p>`;
         }
     })
 
