@@ -38,7 +38,7 @@ fetch("https://opentdb.com/api.php?amount=10")
             
             
             // add event listener to `answerButton` when clicked, to show the answer
-            mainCentered.addEventListener("click", (e)=>{
+            answerButton.addEventListener("click", (e)=>{
                 e.preventDefault();
                 console.log("Button click");
                 triviaCard.append(correctAnswer.innerHTML);
