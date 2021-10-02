@@ -35,12 +35,16 @@ fetch("https://opentdb.com/api.php?amount=10")
             // add trivia card to `mainCentered`
             let mainCentered = document.querySelector("main.centered");
             mainCentered.append(triviaCard);            
+            
+            
+            // add event listener to `answerButton` when clicked, to show the answer
+            mainCentered.addEventListener("click", (e)=>{
+                e.preventDefault();
+                console.log("Button click");
+                triviaCard.append(correctAnswer.innerHTML);
+            })
+            
         }
-
-
-        // add event listener to `answerButton` when clicked, to show the answer
-        
-        
         
     })
     .catch((err)=>{
