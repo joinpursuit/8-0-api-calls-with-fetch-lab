@@ -3,13 +3,13 @@ fetch("https://opentdb.com/api_category.php")
 .then(obj => {
     buildDropDown(obj)
 
-    let id = "-Choose A Category-"
+    let category = "-Choose A Category-"
     
     document.querySelector('select').addEventListener('change', (event) => {
         
-        id = event.target.value
+        category = event.target.value
 
-        displayCards(id)
+        displayCards(category)
         
     })
 
@@ -17,7 +17,7 @@ fetch("https://opentdb.com/api_category.php")
 
         event.preventDefault()
 
-        displayCards(id)
+        displayCards(category)
 
     })
 })
