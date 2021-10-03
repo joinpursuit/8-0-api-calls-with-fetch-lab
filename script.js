@@ -1,5 +1,6 @@
 let amount = prompt('How many questions:'  );
 
+
 //Changed API to make code dynamic
 const BASE_URL = `https://opentdb.com/api.php?amount=${amount}`
 
@@ -9,7 +10,7 @@ const BASE_URL = `https://opentdb.com/api.php?amount=${amount}`
 //Selects <form>, adds an eventListener with an expected return to prevent page from reloading when form submitted
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
-//Prevents error message from displaying multiple times if form submitted multiple times
+//Prevents error message from displaying multiple times if error occurs multiple times
   document.querySelectorAll('.error').forEach((errorMessage) => errorMessage.remove());
 //FETCH(API)
   fetch(BASE_URL)
