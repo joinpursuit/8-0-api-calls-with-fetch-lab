@@ -66,3 +66,8 @@ button:hover {
 .hidden {
   display: none;
 }
+
+select {
+  margin: 10px;
+  border: 2px solid #5c946e;
+}
