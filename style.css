@@ -66,3 +66,17 @@ button:hover {
 .hidden {
   display: none;
 }
+
+.easy {
+  border-color: green;
+}
+.medium {
+  border-color: yellow;
+}
+.hard {
+  border-color: red;
+}
+
+.correct {
+  background-color: rgb(16, 194, 16);
+}
