@@ -2,7 +2,27 @@
 let URL = "https://opentdb.com/api.php?amount=10";
 //select main and form element from DOM
 let main = document.querySelector("main");
-let form = document.querySelector("form")
+let form = document.querySelector("form");
+let section = document.querySelector("section")
+
+let fieldSet = document.createElement("fieldset");
+let difficultyLegend = document.createElement("legend");
+let colorList = document.createElement("ul");
+let red = document.createElement("li");
+let green = document.createElement("li");
+let yellow = document.createElement("li");
+
+red.textContent = "Red = Difficulty: 'Hard'";
+yellow.textContent = "Yellow = Difficulty: 'Medium'";
+green.textContent = "Green = Difficulty: 'Easy'"
+
+colorList.append(red, green, yellow)
+
+difficultyLegend.textContent = "Difficulty Legend"
+
+// difficultyLegend.append(colorList)
+fieldSet.append(difficultyLegend, colorList)
+section.append(fieldSet)
 
 form.addEventListener("submit", (e)=>{
     //prevent form from refreshing
@@ -22,6 +42,8 @@ form.addEventListener("submit", (e)=>{
                 let buttonTag = document.createElement("button");
                 let answerTag = document.createElement("p");
 
+
+
                 //set element Attributes
                 articleTag.setAttribute("class","card");
                 answerTag.setAttribute("class","hidden");
@@ -31,10 +53,10 @@ form.addEventListener("submit", (e)=>{
                 questionTag.innerHTML = el.question;
                 h2Tag.textContent = el.category;
 
-                //establish parent-child relationship 
+                //establish parent-child relationship
                 articleTag.append(h2Tag, questionTag, buttonTag, answerTag);
                 main.append(articleTag);            
-
+                
                 
                 if (el.difficulty === "medium"){
                     articleTag.setAttribute("style","border: solid yellow")                      
@@ -53,5 +75,3 @@ form.addEventListener("submit", (e)=>{
         })).catch((err)=>{
             console.log(err)})
 })
-
-// [ ] The API returns a "difficulty" key which categorizes the question based on how difficult it is. Display this difficult on the page through both text and CSS. For example, you may change the border color of the .card element to yellow if it is a medium difficulty question.
