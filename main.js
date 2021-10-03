@@ -1,6 +1,6 @@
-const anything = "https://opentdb.com/api.php?amount=10/";
+const anything = "https://opentdb.com/api.php?amount=10";
 
-document.querySelector("form").addEventListener("submit", (event) => {
+document.querySelector("form").addEventListener("click", (event) => {
   event.preventDefault();
 
   fetch(anything)
@@ -9,22 +9,28 @@ document.querySelector("form").addEventListener("submit", (event) => {
     .catch(console.log);
 });
 
-const questions = (q) => {
-  for (let i = 0; i < 10; i++) {
+const questions = (obj) => {
+  for (const question of obj.results) {
     const article = document.createElement("article");
-    article.classList.add("card");
-    article.innerHTML = `<h2>${q.results[i].category}</h2>
-    <p>${q.results[i].question}</p>
-    <button class = "goodDay">Show Answer</button>
-    <p class="hidden">${q.results[i].correct_answer}</p>`;
+    article.innerHTML = `
+  <h2>${question.category}</h2>
+  <p>${question.question}</p>
+  <button>Show Answers</button>
+  <p class="hidden">${question.correct_answer}</p>
+  `;
+    article.querySelector("button").addEventListener("click", (event) => {
+      if (
+        event.target.parentElement.querySelector(".hidden").style.display ===
+        "block"
+      ) {
+        event.target.parentElement.querySelector(".hidden").style.display =
+          "none";
+      } else {
+        event.target.parentElement.querySelector(".hidden").style.display =
+          "block";
+      }
+    });
 
     document.querySelector(".centered").append(article);
-
-    document.querySelector(".goodDay").addEventListener("click", (event) => {
-      const hidden = document.querySelector(".hidden");
-      event.target.parentElement.querySelector(".hidden").style.display =
-        "block";
-      hidden.textContent = q.results[i].correct_answer;
-    });
   }
 };
