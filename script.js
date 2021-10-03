@@ -1,4 +1,3 @@
-//store URL within variable "URL" for "read-ability"
 let URL = "https://opentdb.com/api.php?amount=10";
 //select main and form element from DOM
 let main = document.querySelector("main");
@@ -20,29 +19,31 @@ colorList.append(red, green, yellow)
 
 difficultyLegend.textContent = "Difficulty Legend"
 
-// difficultyLegend.append(colorList)
 fieldSet.append(difficultyLegend, colorList)
 section.append(fieldSet)
 
 form.addEventListener("submit", (e)=>{
-    //prevent form from refreshing
     e.preventDefault();
-    //establish connection between external server and retrieve data VIA fetch()
+
     fetch(URL)
         .then((res)=> res.json()) //convert "res" to JSON
         .then((data => {
-
-            //For loop or For Each  
+            
             data.results.forEach(el => {
-                //console.log("Data results",el)
+            //////////////// Category List ////////////////
+                let newOption = document.createElement("option");
+                let select = document.querySelector("select")
+                newOption.textContent = category.category
+                newOption.value = category.category;
+                select.append(newOption);                
+            ////////////////
+            
                 //create elements
                 let articleTag = document.createElement("article");
                 let h2Tag =document.createElement("h2");
                 let questionTag = document.createElement("p");
                 let buttonTag = document.createElement("button");
                 let answerTag = document.createElement("p");
-
-
 
                 //set element Attributes
                 articleTag.setAttribute("class","card");
