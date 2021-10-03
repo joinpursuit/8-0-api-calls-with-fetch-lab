@@ -22,6 +22,22 @@ difficultyLegend.textContent = "Difficulty Legend"
 fieldSet.append(difficultyLegend, colorList)
 section.append(fieldSet)
 
+fetch(URL)
+    .then((res)=> res.json())
+    .then((data)=> {
+        let categoryList = data.results
+        for(let el of categoryList){
+            //////////////// Category List ////////////////
+            let newOption = document.createElement("option");
+            let select = document.querySelector("select")
+            newOption.textContent = el.category
+            newOption.value = el.category[0].toUpperCase() + el.category.slice(1);
+            select.append(newOption);                
+        }       
+    }).catch((err)=>{
+        console.log(err)
+    })
+
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
 
@@ -30,14 +46,6 @@ form.addEventListener("submit", (e)=>{
         .then((data => {
             
             data.results.forEach(el => {
-            //////////////// Category List ////////////////
-                let newOption = document.createElement("option");
-                let select = document.querySelector("select")
-                newOption.textContent = category.category
-                newOption.value = category.category;
-                select.append(newOption);                
-            ////////////////
-            
                 //create elements
                 let articleTag = document.createElement("article");
                 let h2Tag =document.createElement("h2");
