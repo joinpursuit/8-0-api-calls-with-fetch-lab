@@ -1,5 +1,12 @@
-const makeCards = ({ results }) => {  
+sessionStorage.clear()
+let point = 0 
+
+let lifeTimePoints = localStorage.getItem('lifeTimePoints') | 0
+
+const makeCards = ({ results }) => { 
     document.querySelectorAll("main article").forEach(article => article.remove())
+
+    let counter = 0
 
     results.forEach(result => {
         const main = document.querySelector("main")
@@ -12,11 +19,14 @@ const makeCards = ({ results }) => {
         </article>`
             
         const currentArticle = document.querySelector('article:last-child')
+
         
         shuffle(result).forEach(selection => {
             const input = document.createElement('input')
 
             input.setAttribute('type', 'radio')
+
+            input.setAttribute('name', `choice${counter}`)
 
             const label = document.createElement('label')
 
@@ -33,6 +43,7 @@ const makeCards = ({ results }) => {
 
         })
 
+        counter++
         
 
         switch(result.difficulty){
@@ -46,11 +57,24 @@ const makeCards = ({ results }) => {
 
     })
 
-
+    
     document.querySelectorAll('article').forEach(article => {
         article.querySelector("button").addEventListener('click', () => {
+            let choice;
+
+            article.querySelectorAll('label').forEach(label => {
+                const input = label.querySelector('input')
+                input.disabled = true
+                if(input.checked){
+                    input.defaultChecked = true
+                    choice = label.textContent
+                } 
+            })
             const answer = article.querySelectorAll('p')
-            console.log(answer[1])
+            if(answer[1].textContent === choice){
+                sessionStorage.setItem('points', `${point += 100}`)
+                localStorage.setItem('lifeTimePoints', `${lifeTimePoints += 100}`)
+            }
             answer[1].classList.remove("hidden")
             
         })

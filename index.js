@@ -1,7 +1,7 @@
 fetch("https://opentdb.com/api_category.php")
 .then(response => response.json())
-.then(obj => {
-    buildDropDown(obj)
+.then(categories => {
+    buildDropDown(categories)
 
     let category = "-Choose A Category-"
     
