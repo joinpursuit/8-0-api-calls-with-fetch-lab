@@ -17,7 +17,9 @@ const flashCard = (card) => {
   for (let i = 0; i < 10; i++) { //helps add 10 cards to the dom
     const main = document.querySelector('main.centered'); // selecting element main containing class called 'centered  
     const article = document.createElement('article'); //creates article element
+    
     article.classList.add('card');
+    
     article.innerHTML = `
       <h2>
       <select name="trivia_category" class="form-control">
@@ -59,8 +61,7 @@ const flashCard = (card) => {
       <p type = "text" class ="question" style="display:none">${card.results[i].question}</p>
       <button class="answerBtn">Show Answer</button>
       <p class="hidden" >${card.results[i].correct_answer}</p>`
-    
-      //document.querySelector('form').append(article);
+
       main.append(article);
 
       // const selectDiff = document.querySelectorAll('.anyDiff')[i];
@@ -74,6 +75,8 @@ const flashCard = (card) => {
       showAnwer.setAttribute('style', 'display: block'); //showing the hidden content
       showAnwer.textContent = card.results[i].correct_answer; // assigning the value 
     })
+
+    
     }
 
    
