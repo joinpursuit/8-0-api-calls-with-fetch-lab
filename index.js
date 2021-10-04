@@ -21,11 +21,16 @@ const addQuestions = (questions) => {
                     <p class="hidden">${question.correct_answer}</p>`
         document.querySelector("main").append(article);         
             const answer = document.querySelector(".card button");
-                article.querySelector("button").addEventListener("click", (event) => {
-                article.querySelector(".hidden").style.display = "block" 
+            article.querySelector("button").addEventListener("click", (event) => {
+                if (article.querySelector(".hidden").style.display === "block" ){
+                    article.querySelector(".hidden").style.display = "none"
+                } else {
+                    article.querySelector(".hidden").style.display = "block" 
+                }
             });
     };
 };
-
+            
+                
 
 
