@@ -2,18 +2,19 @@ const main = document.querySelector("main")
 const form = document.querySelector("form")
 const section = document.querySelector("section")
 
+
 fetch("https://opentdb.com/api.php?amount=10")
 .then((response)=> 
     response.json()
 )
 .then((data)=> {
     let triviaResults = data.results
-    console.log(triviaResults)
     
     form.addEventListener("submit", (e) => {
         e.preventDefault()
-    
+        
         for(let q of triviaResults) {
+            console.log(q)
             let article = document.createElement("article")
             article.setAttribute("class", "card")
             form.append(article)
@@ -37,6 +38,14 @@ fetch("https://opentdb.com/api.php?amount=10")
             article.append(para2)
 
             main.append(article)
+
+            if(q.difficulty === "hard") {
+                article.setAttribute("style", "border: solid gold")
+            } else if (q.difficulty === "medium") {
+                article.setAttribute("style", "border: solid blue")
+            } else {
+                article.setAttribute("style", "border: solid black")
+            }
 
             showAnsBtn.addEventListener("click", (e) => {
                 para2.classList.remove("hidden")
