@@ -1,9 +1,10 @@
-let URL = "https://opentdb.com/api.php?amount=10";
+let URL = "https://opentdb.com/api.php?amount=20";
 //select main and form element from DOM
 let main = document.querySelector("main");
 let form = document.querySelector("form");
 let section = document.querySelector("section")
 
+//////////////// Legend List ////////////////
 let fieldSet = document.createElement("fieldset");
 let difficultyLegend = document.createElement("legend");
 let colorList = document.createElement("ul");
@@ -15,7 +16,7 @@ red.textContent = "Red = Difficulty: 'Hard'";
 yellow.textContent = "Yellow = Difficulty: 'Medium'";
 green.textContent = "Green = Difficulty: 'Easy'"
 
-colorList.append(red, green, yellow)
+colorList.append(red, yellow, green)
 
 difficultyLegend.textContent = "Difficulty Legend"
 
@@ -25,7 +26,10 @@ section.append(fieldSet)
 fetch(URL)
     .then((res)=> res.json())
     .then((data)=> {
-        let categoryList = data.results
+        let categoryList = data.results.sort((a,b)=>{
+            return a.category > b.category ? 1: -1;
+        })
+        console.log(data.results)
         for(let el of categoryList){
             //////////////// Category List ////////////////
             let newOption = document.createElement("option");
