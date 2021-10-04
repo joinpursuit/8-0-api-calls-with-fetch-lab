@@ -17,24 +17,30 @@ function makeCard(object) {
   const article = document.createElement("article");
   article.classList.add("card");
   article.classList.add(object.difficulty);
+
   const category = document.createElement("h2");
   category.textContent = object.category;
+
   const difficulty = document.createElement("h2");
   difficulty.textContent = object.difficulty;
+
   const question = document.createElement("p");
   question.innerHTML = object.question;
+
   const button = document.createElement("button");
   button.textContent = "Show Answer";
   button.addEventListener("click", (event) => {
     answer.classList.toggle("hidden");
     rightAnswerChoice.classList.toggle("correct");
   });
+
   const answer = document.createElement("p");
   answer.classList.add("hidden");
   answer.innerHTML = object.correct_answer;
   //adding multiple choice selection
+
   const multipleChoice = document.createElement("ol");
-  multipleChoice.type = "A";
+  //   multipleChoice.type = "A";
   const rightAnswerChoice = document.createElement("li");
   // rightAnswerChoice.classList.add('correct')
   rightAnswerChoice.innerHTML = object.correct_answer;
@@ -49,8 +55,9 @@ function makeCard(object) {
   for (let i = multipleChoice.children.length; i > 0; i--) {
     shuffle.append(multipleChoice.children[(Math.random() * i) | 0]);
   }
+  shuffle.type = "A";
   //adding everything to the article object
-  article.append(difficulty);
+  //   article.append(difficulty);
   article.append(category);
   article.append(question);
   //   article.append(multipleChoice);
