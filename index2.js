@@ -4,6 +4,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
   fetch(BASE_URL)
     .then((response) => response.json())
     .then(questions);
+    event.target.reset();
 });
 
 const questions = (question) => {
