@@ -80,3 +80,8 @@ button:hover {
 .correct {
   background-color: rgb(16, 194, 16);
 }
+
+.form-control {
+  display: block;
+  margin: 20px;
+}
