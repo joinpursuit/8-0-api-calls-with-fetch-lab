@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trivia Questions</title>
     <link rel="stylesheet" href="style.css" />
+    <script defer src="./main.js"></script>
   </head>
   <body>
     <header>
@@ -13,10 +14,20 @@
     </header>
     <section class="centered">
       <form>
+          <input id="enter" type="number" name="enter" max="50" />
         <button type="submit">Get New Questions</button>
+        <select name="category" id="category"></select>
+        <select name="level" id="level">
+          <option value="random">Random</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
       </form>
     </section>
+    
     <main class="centered">
+
       <!-- Your `.card` elements should show up here. -->
     </main>
   </body>
