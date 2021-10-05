@@ -27,7 +27,13 @@ form.addEventListener("submit", (x)=>{
 
                 box.append(topic, q, a, button);
                 main.append(box);
+
+                button.addEventListener("click", ()=>{
+                    a.setAttribute("class", "visible");
+                });
             });
         });
-
+        
 });
+
+
