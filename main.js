@@ -1,4 +1,4 @@
-const url =
+let url =
   "https://opentdb.com/api.php?amount=10&category=10&difficulty=easy&type=multiple";
 
 //create main
