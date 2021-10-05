@@ -1,6 +1,11 @@
 let submitButton = document.querySelector(".centered form button");
 submitButton.addEventListener("click", (e) => {
     e.preventDefault();
+    let centered = document.querySelector("main.centered");
+    // set innerHTML to blank to reset for new questions
+    centered.innerHTML = "";
+    
+    console.log("centered", centered.innerHTML);
     let baseURL = "https://opentdb.com/api.php?amount=10";
 
     /* dropdown menu value - make urls dynamic */
@@ -12,7 +17,7 @@ submitButton.addEventListener("click", (e) => {
 
     /* THIS WORKS */
     let select = document.querySelector('select');
-    console.log(select.options[select.selectedIndex].value); 
+    // console.log(select.options[select.selectedIndex].value); 
 
     let optionValue = select.options[select.selectedIndex].value;
     /*  gives you the selected value */
@@ -21,7 +26,7 @@ submitButton.addEventListener("click", (e) => {
         baseURL += "&category=" + optionValue;
     }
 
-    console.log("baseURL:", baseURL);
+    // console.log("baseURL:", baseURL);
     // let newBaseURL = baseURL += "&category=" + optionValue;
     // console.log("newBaseURL:", newBaseURL);
 
@@ -34,7 +39,7 @@ fetch(baseURL)
 
         // get the key of `results` from the fetch data
         let questionList = data.results;
-        // console.log("questionList:", questionList);
+        console.log("questionList:", questionList);
 
         // create a question, then add it
         for (let askQuestion of questionList){
