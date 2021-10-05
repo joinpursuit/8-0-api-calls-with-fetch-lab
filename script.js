@@ -1,8 +1,9 @@
 let URL = "https://opentdb.com/api.php?amount=20";
+
 //select main and form element from DOM
 let main = document.querySelector("main");
 let form = document.querySelector("form");
-let section = document.querySelector("section")
+let section = document.querySelector("section");
 
 //////////////// Legend List ////////////////
 let fieldSet = document.createElement("fieldset");
@@ -14,42 +15,28 @@ let yellow = document.createElement("li");
 
 red.textContent = "Red = Difficulty: 'Hard'";
 yellow.textContent = "Yellow = Difficulty: 'Medium'";
-green.textContent = "Green = Difficulty: 'Easy'"
+green.textContent = "Green = Difficulty: 'Easy'";
+difficultyLegend.textContent = "Difficulty Legend";
 
-colorList.append(red, yellow, green)
+colorList.append(red, yellow, green);
+fieldSet.append(difficultyLegend, colorList);
+section.append(fieldSet);
 
-difficultyLegend.textContent = "Difficulty Legend"
-
-fieldSet.append(difficultyLegend, colorList)
-section.append(fieldSet)
-
-fetch(URL)
-    .then((res)=> res.json())
-    .then((data)=> {
-        let categoryList = data.results.sort((a,b)=>{
-            return a.category > b.category ? 1: -1;
-        })
-        console.log(data.results)
-        for(let el of categoryList){
-            //////////////// Category List ////////////////
-            let newOption = document.createElement("option");
-            let select = document.querySelector("select")
-            newOption.textContent = el.category
-            newOption.value = el.category[0].toUpperCase() + el.category.slice(1);
-            select.append(newOption);                
-        }       
-    }).catch((err)=>{
-        console.log(err)
-    })
-
+//////////////// Legend List ////////////////
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
+    let value = document.querySelector("select").value;
+    console.log(e)
+    if(value !== "any") {
+        URL += `&category=${value}`
+    }
 
     fetch(URL)
         .then((res)=> res.json()) //convert "res" to JSON
         .then((data => {
-            
-            data.results.forEach(el => {
+            let newCards = data.results
+            console.log(newCards)
+            newCards.forEach(card => {
                 //create elements
                 let articleTag = document.createElement("article");
                 let h2Tag =document.createElement("h2");
@@ -63,26 +50,25 @@ form.addEventListener("submit", (e)=>{
 
                 //set text content within elements
                 buttonTag.textContent = "Show Answer";
-                questionTag.innerHTML = el.question;
-                h2Tag.textContent = el.category;
+                questionTag.innerHTML = card.question;
+                h2Tag.innerHTML = card.category;
 
                 //establish parent-child relationship
                 articleTag.append(h2Tag, questionTag, buttonTag, answerTag);
                 main.append(articleTag);            
                 
-                
-                if (el.difficulty === "medium"){
+                if (card.difficulty === "medium"){
                     articleTag.setAttribute("style","border: solid yellow")                      
                 }
-                else if (el.difficulty === "hard"){
+                else if (card.difficulty === "hard"){
                     articleTag.setAttribute("style","border: solid red")                      
                 }
                 //add event listener on "SHOW ANS" button element
                 buttonTag.addEventListener("click", () =>{
                     //remove hidden tag from answer                   
-                    answerTag.classList.remove("hidden");
+                    answerTag.classList.toggle("hidden");
                     //set text content as correct answer
-                    answerTag.textContent = el.correct_answer;
+                    answerTag.innerHTML = card.correct_answer;
                 });            
             });
         })).catch((err)=>{
