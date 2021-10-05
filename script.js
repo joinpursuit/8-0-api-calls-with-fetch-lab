@@ -4,13 +4,26 @@ submitButton.addEventListener("click", (e) => {
     let baseURL = "https://opentdb.com/api.php?amount=10";
 
     /* dropdown menu value - make urls dynamic */
-    let value = document.querySelector("select").value;
-    console.log(value);
+    // let select = document.querySelector("select").value;
+    // console.log("select:", select);
 
-    if (value !== "any"){
-        baseURL += "&category=" + value;
+    // console.log(e.options[e.selectedIndex].value);
+    // console.log(e.target.option);
+
+    /* THIS WORKS */
+    let select = document.querySelector('select');
+    console.log(select.options[select.selectedIndex].value); 
+
+    let optionValue = select.options[select.selectedIndex].value;
+    /*  gives you the selected value */
+
+    if (optionValue !== "any"){
+        baseURL += "&category=" + optionValue;
     }
 
+    console.log("baseURL:", baseURL);
+    // let newBaseURL = baseURL += "&category=" + optionValue;
+    // console.log("newBaseURL:", newBaseURL);
 
 fetch(baseURL)
     .then((res)=>{
@@ -103,17 +116,8 @@ fetch(baseURL)
             /* START - Add dropdown to select question Category */
             /* when form submitted, update the API call so only those types of questions are retrieved */
 
-
-
-
-
-
-
-
-
-
             let categoryType = askQuestion.category;
-            console.log(categoryType);
+            // console.log(categoryType);
 
             // if (categoryType === "general knowledge"){
             //     triviaQuestion.append(genKnowledgeFetch);
@@ -250,27 +254,4 @@ fetch(baseURL)
         // mainCentered.append(errorMessage);
         console.log(err);
     })
-
-
-
-
-// fetch("https://api.imgflip.com/get_memes")
-//     .then((response)=>{
-//         return response.json();
-//     })
-//     .then((memeData)=>{
-//         // console.log("memedata", memeData);
-//         console.log("theurl", "https://i.imgflip.com/30b1gx.jpg");
-
-//         let memeImg = document.createElement("img");
-//         memeImg.src = memeData[memes.url]
-//         triviaCategory.append(memeImg);
-//         console.log("this", memeImg);
-//         console.log("scream", memeImg.src);
-//     })
-//     .catch((error)=>{
-//         console.log(error);
-// })
-
-
 })
