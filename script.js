@@ -8,13 +8,6 @@ submitButton.addEventListener("click", (e) => {
     console.log("centered", centered.innerHTML);
     let baseURL = "https://opentdb.com/api.php?amount=10";
 
-    /* dropdown menu value - make urls dynamic */
-    // let select = document.querySelector("select").value;
-    // console.log("select:", select);
-
-    // console.log(e.options[e.selectedIndex].value);
-    // console.log(e.target.option);
-
     /* THIS WORKS */
     let select = document.querySelector('select');
     // console.log(select.options[select.selectedIndex].value); 
@@ -25,10 +18,6 @@ submitButton.addEventListener("click", (e) => {
     if (optionValue !== "any"){
         baseURL += "&category=" + optionValue;
     }
-
-    // console.log("baseURL:", baseURL);
-    // let newBaseURL = baseURL += "&category=" + optionValue;
-    // console.log("newBaseURL:", newBaseURL);
 
 fetch(baseURL)
     .then((res)=>{
@@ -116,82 +105,8 @@ fetch(baseURL)
                 triviaCard.prepend(hard);
             }
             /* END - Show "difficulty" key */
-
-
-            /* START - Add dropdown to select question Category */
-            /* when form submitted, update the API call so only those types of questions are retrieved */
-
-            let categoryType = askQuestion.category;
-            // console.log(categoryType);
-
-            // if (categoryType === "general knowledge"){
-            //     triviaQuestion.append(genKnowledgeFetch);
-            // }
-            // if (categoryType === "mythology"){
-            //     triviaQuestion.append(mythologyFetch);
-            // }
-            // if (categoryType === "history"){
-            //     triviaQuestion.append(hardCategoryFetch);
-            // }
-            // if (categoryType === "art"){
-            //     triviaQuestion.append(artFetch);
-            // }
-            // if (categoryType === "mythology"){
-            //     triviaQuestion.append(mythologyFetch);
-            // }
-            // if (categoryType === "history"){
-            //     triviaQuestion.append(hardCategoryFetch);
-            // }
-            // if (categoryType === "art"){
-            //     triviaQuestion.append(artFetch);
-            // }
-            // if (categoryType === "mythology"){
-            //     triviaQuestion.append(mythologyFetch);
-            // }
-            // if (categoryType === "history"){
-            //     triviaQuestion.append(hardCategoryFetch);
-            // }
-            // if (categoryType === "art"){
-            //     triviaQuestion.append(artFetch);
-            // }
-            // if (categoryType === "mythology"){
-            //     triviaQuestion.append(mythologyFetch);
-            // }
-            // if (categoryType === "history"){
-            //     triviaQuestion.append(hardCategoryFetch);
-            // }
-
-            /* Gather URLs to replace fetch */
-
-            // let genKnowledgeFetch = baseURL + "&category=" + "9";
-            // let entBooksFetch = "https://opentdb.com/api.php?amount=10&category=10";
-            // let entFilmFetch = "https://opentdb.com/api.php?amount=10&category=11";
-            // let entMusicFetch = "https://opentdb.com/api.php?amount=10&category=12";
-            // let entMusicalsFetch = "https://opentdb.com/api.php?amount=10&category=13";
-            // let entTvFetch = "https://opentdb.com/api.php?amount=10&category=14";
-            // let entVidGamesFetch = "https://opentdb.com/api.php?amount=10&category=15";
-            // let entBoardGamesFetch = "https://opentdb.com/api.php?amount=10&category=16";
-            // let sciNatureFetch = "https://opentdb.com/api.php?amount=10&category=17";
-            // let sciComputersFetch = "https://opentdb.com/api.php?amount=10&category=18";
-            // let sciMathFetch = "https://opentdb.com/api.php?amount=10&category=19";
-            // let mythologyFetch = "https://opentdb.com/api.php?amount=10&category=20";
-            // let sportsFetch = "https://opentdb.com/api.php?amount=10&category=21";
-            // let geographyFetch = "https://opentdb.com/api.php?amount=10&category=22";
-            // let historyFetch = "https://opentdb.com/api.php?amount=10&category=23";
-            // let politicsFetch = "https://opentdb.com/api.php?amount=10&category=24";
-            // let artFetch = "https://opentdb.com/api.php?amount=10&category=25";
-            // let celebritiesFetch = "https://opentdb.com/api.php?amount=10&category=26";
-            // let animalsFetch = "https://opentdb.com/api.php?amount=10&category=27";
-            // let vehiclesFetch = "https://opentdb.com/api.php?amount=10&category=28";
-            // let entComicsFetch = "https://opentdb.com/api.php?amount=10&category=29";
-            // let sciGadgetsFetch = "https://opentdb.com/api.php?amount=10&category=30";
-            // let entAnimeFetch = "https://opentdb.com/api.php?amount=10&category=31";
-            // let entCartoonFetch = "https://opentdb.com/api.php?amount=10&category=32";
-
-            /* END - Add dropdown to select question Category */
         }
     
-
 
         /* START fetch another API */
         return fetch("https://api.imgflip.com/get_memes")
@@ -251,7 +166,6 @@ fetch(baseURL)
                 console.log(error);
         })
         /* END fetch another API */
-
     })
     .catch((err)=>{
         // let errorMessage = document.createElement("div");
