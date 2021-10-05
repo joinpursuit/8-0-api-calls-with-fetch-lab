@@ -23,10 +23,33 @@ fieldSet.append(difficultyLegend, colorList);
 section.append(fieldSet);
 
 //////////////// Legend List ////////////////
+
+fetch("https://opentdb.com/api_category.php")
+    .then((res)=>res.json())
+    .then((data)=>{
+        let categoriesArray = data.trivia_categories;
+        let select = document.querySelector("#category-select");
+        for(let cat of categoriesArray){
+            let newOption = document.createElement("option");
+            newOption.textContent = cat.name;
+            newOption.value =  cat.id;
+            select.append(newOption);
+        }
+    }).catch((err)=> console/log(err))
+let optionsArray = ["General Knowledge",];
+for(let i=9; i<optionsArray.length; i++){
+    //append each one
+    let select = document.querySelector("#category-select");
+    let newOption = document.createElement("option");
+    newOption.textContent = optionsArray[i];
+    newOption.value = i;
+}
+
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
     let value = document.querySelector("select").value;
-    console.log(e)
+    console.log(e);
+    
     if(value !== "any") {
         URL += `&category=${value}`
     }
@@ -74,3 +97,4 @@ form.addEventListener("submit", (e)=>{
         })).catch((err)=>{
             console.log(err)})
 })
+
