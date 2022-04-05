@@ -63,6 +63,14 @@ button:hover {
   padding: 25px;
 }
 
+.medium{
+  border:3px solid blue;
+}
+
+.hard{
+  border: 3px solid gold;
+}
+
 .hidden {
   display: none;
 }

@@ -13,7 +13,6 @@ function generateTriviaQuestions(url) {
       return response.json();
     })
     .then((json) => {
-      console.log(json);
       let questions = json.results;
       for (let question of questions) {
         let questionCard = createQuestion(question);
@@ -28,6 +27,12 @@ function generateTriviaQuestions(url) {
 function createQuestion(question) {
   let article = document.createElement("article");
   article.classList.add("card");
+
+  let difficulty = question.difficulty;
+  let h4 = document.createElement("h4");
+  article.append(h4);
+  h4.textContent = `Difficulty : ${difficulty}`;
+  article.classList.add(difficulty);
 
   let h2 = document.createElement("h2");
   article.append(h2);
@@ -45,7 +50,7 @@ function createQuestion(question) {
   let button = document.createElement("button");
   correctAnswer.before(button);
   button.addEventListener("click", () => {
-    correctAnswer.classList.remove("hidden");
+    correctAnswer.classList.toggle("hidden");
   });
   button.textContent = "Show Answer";
 
