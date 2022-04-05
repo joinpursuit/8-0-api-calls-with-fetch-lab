@@ -1,14 +1,15 @@
 const BASE_URL = "https://opentdb.com/api.php?amount=";
 const amount = 10;
 const myURL = BASE_URL + amount;
+
 const form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     getTriviaByAmount();
 });
 
-function getTriviaByAmount(amount) {
-    fetch(`${myURL}`)
+function getTriviaByAmount() {
+    fetch(myURL)
         .then((response) => response.json())
         .then((json) => {
             const data = json.results;
@@ -34,9 +35,13 @@ function createTrivia(data) {
         const showAnswerButton =
             document.createElement('button');
         showAnswerButton.textContent = 'Show Answer';
+        showAnswerButton.addEventListener('click', () => {
+            correctAnswer.classList.toggle('hidden');
+        });
         const correctAnswer =
             document.createElement('p');
         correctAnswer.textContent = `${data[i].correct_answer}`;
+        correctAnswer.classList.add('hidden');
         article.append(header, question, showAnswerButton, correctAnswer);
         main.append(article);
     }
