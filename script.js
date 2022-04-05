@@ -42,6 +42,13 @@ function createQuestion(question) {
   article.append(p);
   p.textContent = question.question;
 
+  let choices = generateMultipleChoices(
+    question.correct_answer,
+    question.incorrect_answers,
+    question
+  );
+  article.append(choices);
+
   let correctAnswer = document.createElement("p");
   article.append(correctAnswer);
   correctAnswer.classList.add("hidden");
@@ -51,8 +58,54 @@ function createQuestion(question) {
   correctAnswer.before(button);
   button.addEventListener("click", () => {
     correctAnswer.classList.toggle("hidden");
+    let labels = choices.querySelectorAll("label");
+    labels.forEach((label) => {
+      if (label.textContent === question.correct_answer) {
+        label.classList.toggle("correctAnswer");
+      } else {
+        label.classList.toggle("wrongAnswer");
+      }
+    });
   });
   button.textContent = "Show Answer";
 
   return article;
+}
+
+function generateMultipleChoices(correctAnswer, wrongAnswers, question) {
+  let answers = [];
+  let numOfQuestions = wrongAnswers.length + 1;
+  for (let i = 0; i < numOfQuestions; i++) {
+    answers.push("");
+  }
+
+  let randomIndex = Math.floor(Math.random() * numOfQuestions);
+  answers[randomIndex] = correctAnswer;
+
+  for (let wrongAnswer of wrongAnswers) {
+    for (let i = 0; i < answers.length; i++) {
+      if (answers[i] === "") {
+        answers[i] = wrongAnswer;
+        break;
+      }
+    }
+  }
+
+  let div = document.createElement("div");
+
+  for (let answer of answers) {
+    let label = document.createElement("label");
+    label.textContent = answer;
+
+    let input = document.createElement("input");
+    input.type = "radio";
+    input.name = question.question;
+
+    label.prepend(input);
+    div.append(label);
+    div.append(document.createElement("br"));
+  }
+
+  return div;
+  console.log(answers);
 }

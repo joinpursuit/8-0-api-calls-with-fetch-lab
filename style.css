@@ -71,6 +71,14 @@ button:hover {
   border: 3px solid gold;
 }
 
+label.correctAnswer{
+  color: green;
+}
+
+label.wrongAnswer{
+  color:red;
+}
+
 .hidden {
   display: none;
 }
