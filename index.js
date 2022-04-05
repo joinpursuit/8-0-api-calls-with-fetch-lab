@@ -23,14 +23,14 @@ fetch(BASE_URL)
         console.log(ques.question);
         article.append(p1);
 
+        const showAnswer = document.createElement("button");
+        showAnswer.textContent = "Show Answer";
+        article.append(showAnswer);
+
         const p2 = document.createElement("p");
         p2.textContent = ques.correct_answer;
         p2.setAttribute("class", "hidden");
         article.append(p2);
-
-        const showAnswer = document.createElement("button");
-        showAnswer.textContent = "Show Answer";
-        article.append(showAnswer);
 
         main.append(article);
 
