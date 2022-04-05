@@ -38,6 +38,15 @@ fetch(BASE_URL)
           p2.classList.remove("hidden");
           p2.innerHTML = ques.correct_answer;
         });
+
+        // set colors of question border based on difficulty
+        if (ques.difficulty === "hard") {
+          article.setAttribute("style", "border: 3px solid red");
+        } else if (ques.difficulty === "medium") {
+          article.setAttribute("style", "border: 3px solid gold");
+        } else {
+          article.setAttribute("style", "border: 3px solid green");
+        }
       }
     });
   })
