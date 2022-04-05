@@ -1,4 +1,4 @@
-const BASE_URL = "https://opentdb.com/api_config.php";
+const BASE_URL = "https://opentdb.com/api.php?amount=10";
 let form = document.querySelector("form");
 let main = document.querySelector("main.centered");
 form.addEventListener("submit", (event) => {
