@@ -40,7 +40,8 @@ function createQuestion(question) {
 
   let p = document.createElement("p");
   article.append(p);
-  p.textContent = question.question;
+  //this decode method is from Oscar's resource
+  p.textContent = he.decode(question.question);
 
   let choices = generateMultipleChoices(
     question.correct_answer,
@@ -107,5 +108,4 @@ function generateMultipleChoices(correctAnswer, wrongAnswers, question) {
   }
 
   return div;
-  console.log(answers);
 }
