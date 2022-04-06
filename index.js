@@ -6,10 +6,17 @@ const BASE_URL = 'https://opentdb.com/api.php?amount=10';
 const createErrorMessage = (message) => {
   const section = document.createElement('section'); // Creates a section element
   section.classList.add('error'); //adds 'error' as a class for the section and assigns text content
-  section.innerHTML = ` 
-    <p>There was an error!</p>
-    <p class="message">${message}</p>`;
-  document.querySelector('form').after(section); // appends section right after form tag
+
+  const paraOne = dcoument.createElement('p');
+  const paraTwo = document.createElement('p.nessage');
+  section.append(paraOne);
+  section.append(paraTwo);
+
+  paraOne.textContent = 'There was an error!';
+  paraTwo.textContent = `${message}`;
+
+  // appends section right after form tag
+  document.querySelector('form').after(section);
 };
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -17,8 +24,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const form = document.querySelector('form');
 
   document.querySelector('main.centered').innerHTML = '';
-
   const newQuestionBtn = document.querySelector('button');
+
   let selectVal, selectText, selectModeNum, selectModeText;
 
   /***  IIFE function to build the select statement so it is visible in the page*/
@@ -87,7 +94,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     div.appendChild(label).appendChild(selectCat);
     div.appendChild(labelDiff).appendChild(selectDifficulty);
     div.before(div, newQuestionBtn);
-
   })();
 
   category = document.querySelector('select#category');
@@ -111,8 +117,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   //form submitted
   newQuestionBtn.addEventListener('click', (event) => {
     event.preventDefault();
-  document.querySelector('main.centered').innerHTML = '';
-    console.log(selectVal, selectModeText);
+    document.querySelector('main.centered').innerHTML = '';
+    // console.log(selectVal, selectModeText);
+
     const url = urlFetchInfo(
       selectVal,
       selectText,
@@ -139,7 +146,9 @@ const urlFetchInfo = (selectVal, selectText, selectModeText, selectModeNum) => {
   } else if (selectVal !== 'none') {
     url = CATEGORY_URL + selectVal;
   }
+
   console.log(url);
+
   return url;
 };
 
@@ -195,8 +204,10 @@ const createCards = ({ results }) => {
         li.style.listStyleType = 'none';
         li.style.marginLeft = '-40px';
         li.style.cursor = 'pointer';
+
         const span = document.createElement('span');
         span.textContent = decodeHtml(option);
+
         li.append(span);
         optionsUl.append(li);
       });
