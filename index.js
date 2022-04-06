@@ -39,7 +39,10 @@ function cardCreator ({results}) {
 document.addEventListener("click",({target}) => {
     console.log(target); //Making sure the right thing is being accessed
     if (target.className == "answerButton"){
-        target.
+        let showAnswer = target.parentElement.querySelector(".hidden");
+        console.log(showAnswer);
+        //target.parentElement.children[3].classList.remove("hidden");
+        showAnswer.classList.remove("hidden");
     }
   });
 
