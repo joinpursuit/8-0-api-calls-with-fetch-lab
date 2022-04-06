@@ -45,34 +45,53 @@ function getCards(param) {
             console.log(json);
             
             for(let res of json.results){
-                const article  = document.createElement('article'),
-                    title    = document.createElement('h2'),
-                    question = document.createElement('p'),
-                    answer   = document.createElement('p'),
-                    button   = document.createElement('button');
-                article.classList.add('card');
+                const card    = document.createElement('article'),
+                    title     = document.createElement('h2'),
+                    question  = document.createElement('p'),
+                    answer    = document.createElement('p'),
+                    btnAnswer = document.createElement('button');
+                card.classList.add('card');
                 title.textContent = res.category;
-                let q = htmlentities.encode(res.question);
+                //let q = htmlentities.encode(res.question);
                 //question.textContent = htmlentities.decode(q);
                 //question.textContent = decodeEntities(res.question);
                 question.textContent = he.decode(res.question);
-                answer.innerText = 'CORRECT ANSWER';
+                answer.textContent = he.decode(res.correct_answer);
                 answer.classList.add('hidden');
-                button.innerText = 'Show Answer',
+                btnAnswer.innerText = 'Show Answer';
+                btnAnswer.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    //showAnswer(card);
+                    if(answer.classList.contains('hidden')){
+                        answer.classList.remove('hidden');
+                        btnAnswer.innerText = 'Hid Answer';
+                        btnAnswer.setAttribute('style', 'background: #e63946')
+                    }else{
+                        answer.classList.add('hidden');
+                        btnAnswer.innerText = 'Show Answer';
+                        btnAnswer.setAttribute('style', 'background: #4f7d5d')
+                    }
+                    
+                });
 
-                article.appendChild(title)
-                article.appendChild(question)
-                article.appendChild(button)
-                article.appendChild(answer)
+                card.appendChild(title)
+                card.appendChild(question)
+                card.appendChild(btnAnswer)
+                card.appendChild(answer)
 
-                main.append(article)
+                main.append(card)
             }
     
     })
     .catch((error) => {
+        console.log(error)
         // const message = createErrorMessage(error);
         // document.querySelector("main").append(message);
     });
+}
+
+function showAnswer(selected){
+    answer.classList.toggle('hidden');
 }
 
 function decodeEntities(encodedString) {
