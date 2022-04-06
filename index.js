@@ -1,48 +1,34 @@
-//import {encode} from '/node_modules/html-entities';
-//import {he} from '/node_modules/he';
-//import he from '/he';
-
-const BASE_URL = "https://opentdb.com/api.php";
-const main = document.getElementById('container');
-const form = document.querySelector('#new-trivia');
-
-console.log(BASE_URL)
+import {categories} from '/categories.js';
+//
+const BASE_URL = "https://opentdb.com/api.php",
+      main     = document.getElementById('container'),
+      form     = document.querySelector('#new-trivia');
+let amount     = document.querySelector('#trivia-amount'),
+    category   = document.querySelector('#trivia-category');     
+// => Loading categories select
+loadCategories();
+// =>
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-    //const { id } = event.target;
-  
-    const amount = document.querySelector('#trivia-amount').value;
-    const category = document.querySelector('#trivia-category').value;
     let paremeters = '';
-    
+    //main.remove();
+    amount   = amount.value;
+    category = category.value;
+    // => Validating parameters to create URL
     if(amount !== ''){
         paremeters = '?amount='+amount;
     }
     if(category !== ''){
         paremeters += '&category='+category;
     }
-    console.log(paremeters)
     getCards(paremeters)
-    
-    // .catch((error) => {
-    //     // You can do what you like with the error here.
-    //     console.log(error);
-    // });
 })
 
 function getCards(param) {
-    //const uri = encodeURI(`${BASE_URL}${param}`); 
-    //let encoded = encodeURI(uri);
-    let decoded = decodeURI(`${BASE_URL}${param}`);
+    // => Getting data from API
     fetch(`${BASE_URL}${param}`)
-    // .then((response) => response.json())
-    // .then(result => {
-    //     console.log(result)
-    //     fetch(BASE_URL)
         .then((response) => response.json())
         .then((json) => {
-            // You can do what you like with the result here.
-            console.log(json);
             
             for(let res of json.results){
                 const card    = document.createElement('article'),
@@ -52,91 +38,48 @@ function getCards(param) {
                     btnAnswer = document.createElement('button');
                 card.classList.add('card');
                 title.textContent = res.category;
-                //let q = htmlentities.encode(res.question);
-                //question.textContent = htmlentities.decode(q);
-                //question.textContent = decodeEntities(res.question);
                 question.textContent = he.decode(res.question);
                 answer.textContent = he.decode(res.correct_answer);
                 answer.classList.add('hidden');
+
+                // => Binding event to display the correct answer
                 btnAnswer.innerText = 'Show Answer';
                 btnAnswer.addEventListener('click', (event) => {
                     event.preventDefault();
-                    //showAnswer(card);
-                    if(answer.classList.contains('hidden')){
-                        answer.classList.remove('hidden');
-                        btnAnswer.innerText = 'Hid Answer';
-                        btnAnswer.setAttribute('style', 'background: #e63946')
-                    }else{
-                        answer.classList.add('hidden');
-                        btnAnswer.innerText = 'Show Answer';
-                        btnAnswer.setAttribute('style', 'background: #4f7d5d')
-                    }
-                    
+                    getAnswer(answer, btnAnswer);
                 });
 
-                card.appendChild(title)
-                card.appendChild(question)
-                card.appendChild(btnAnswer)
-                card.appendChild(answer)
-
-                main.append(card)
+                card.appendChild(title);
+                card.appendChild(question);
+                card.appendChild(btnAnswer);
+                card.appendChild(answer);
+                // => Adding new card
+                main.append(card);
             }
     
     })
     .catch((error) => {
-        console.log(error)
-        // const message = createErrorMessage(error);
-        // document.querySelector("main").append(message);
+        const errorMessage = document.createElement('p');
+        errorMessage.textContent = error;
+        main.append(errorMessage);
     });
 }
 
-function showAnswer(selected){
-    answer.classList.toggle('hidden');
+function getAnswer(answer, btnAnswer){
+    if(answer.classList.contains('hidden')){
+        answer.classList.remove('hidden');
+        btnAnswer.innerText = 'Hide Answer';
+        btnAnswer.setAttribute('style', 'background: #ef476f;color: #FFF')
+    }else{
+        answer.classList.add('hidden');
+        btnAnswer.innerText = 'Show Answer';
+        btnAnswer.setAttribute('style', 'background: #e9c46a;color: #264653')
+    }
 }
 
-function decodeEntities(encodedString) {
-    let translate_re = /&(nbsp|amp|quot|lt|gt);/g, // Creates a regular expression pattern
-        translate = { // Creates an object where its entries are all the special characters
-        "nbsp":" ",
-        "amp" : "&",
-        "quot": "\"",
-        "lt"  : "<",
-        "gt"  : ">"
-    };
-    return encodedString.replace(translate_re, function(match, entity) { //first evalautes the HTML entities that contain the input string and replace them  
-        return translate[entity];
-    })
-    .replace(/&#(\d+);/gi, function(match, numStr) { //then, the regex evalutes if there uncoded characters and returns the new decoded string 
-        let num = parseInt(numStr, 10); //
-        return String.fromCharCode(num); //String.fromCharCode is a method that returns a string generated by a sequence.
-    });
+function loadCategories() {
+    for (const [key, value] of Object.entries(categories)) {
+        let option = new Option(value, key);
+        category.add(option);
+    }
 }
-
-(function(window){
-	window.htmlentities = {
-		/**
-		 * Converts a string to its html characters completely.
-		 *
-		 * @param {String} str String with unescaped HTML characters
-		 **/
-		encode : function(str) {
-			var buf = [];
-			
-			for (var i=str.length-1;i>=0;i--) {
-				buf.unshift(['&#', str[i].charCodeAt(), ';'].join(''));
-			}
-			
-			return buf.join('');
-		},
-		/**
-		 * Converts an html characterSet into its original character.
-		 *
-		 * @param {String} str htmlSet entities
-		 **/
-		decode : function(str) {
-			return str.replace(/&#(\d+);/g, function(match, dec) {
-				return String.fromCharCode(dec);
-			});
-		}
-	};
-})(window);

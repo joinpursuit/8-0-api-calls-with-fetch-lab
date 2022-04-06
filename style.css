@@ -20,13 +20,18 @@ h6 {
 }
 
 header {
-  background: #5c946e;
+  background: #2a9d8f;
   border-bottom: 3px solid #4f7d5d;
-  color: #fbf5f3;
+  text-align: center;
 }
 
 header h1 {
   padding: 25px;
+  font-family: 'Erica One', cursive;
+  font-size: 3rem;
+  
+  letter-spacing: 1px;
+  color: #e9c46a;
 }
 
 header h1 span {
@@ -34,35 +39,69 @@ header h1 span {
   font-size: 18px;
   margin-left: 10px;
 }
-
 .centered {
   display: grid;
-  gap: 15px;
+  gap: 5px;
   grid-template-columns: repeat(3, 1fr);
   margin: 25px auto;
   width: 75%;
 }
-
-button {
-  border: 2px solid #5c946e;
+section {
+  margin: 25px auto;
+  width: 75%;
+}
+section form {margin: auto; display: table;}
+section form label {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;}
+section form input {padding: 10px; margin: 5px 0;font-family: 'Open Sans', sans-serif;font-size: 1rem;
+  font-weight: 400;background-color: #e9ecef; border: none;}
+section form select {padding: 10px; margin: 5px 0;font-family: 'Open Sans', sans-serif;font-size: 1rem; 
+  font-weight: 400;background-color: #e9ecef; border: none;}
+section form button {
+  padding: 10px 20px;
+  margin: 10px auto;
+  display: block;
+  border: 2px solid #2a9d8f;
   border-radius: 5px;
-  background: #4f7d5d;
+  background: #2a9d8f;
   color: #fbf5f3;
   cursor: pointer;
-  font-weight: bold;
-  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem; 
+  font-weight: 800;
+  
 }
-
-button:hover {
+section form button:hover {
   border: 2px solid #4f7d5d;
-  background: #5c946e;
+  background: #006d77;
 }
-
 .card {
-  border: 3px solid #4f7d5d;
   padding: 25px;
+  border: 10px solid #d8f3dc;
+  border-radius: 1px;
+  background-color: #fefae0;
 }
-
+.card h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  color: #006d77;
+}
+.card p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: #264653;
+}
+.card button {
+  padding: 10px;
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  color: #264653;
+  background-color: #e9c46a;
+  border: none;
+}
+.card button:hover {cursor: pointer;}
 .hidden {
   display: none;
 }
