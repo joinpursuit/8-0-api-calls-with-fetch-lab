@@ -4,7 +4,8 @@ const form = document.querySelector("form");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   document.querySelector("main.centered").innerHTML = "";
-  generateTriviaQuestions(url);
+  let categoryNum = document.getElementById("category").value;
+  generateTriviaQuestions(url + `&category=${categoryNum}`);
 });
 
 function generateTriviaQuestions(url) {
