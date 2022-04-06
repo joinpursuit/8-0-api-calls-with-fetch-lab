@@ -9,7 +9,7 @@ gnqButtonArea.addEventListener('submit', (event) => {
     .then((trivia_questions) => {
       trivia_questions.results.forEach((trivia) => {
         const article = document.createElement('article');
-        article.setAttribute('class', 'card');
+        article.classList.add('card');
         gnqButtonArea.append(article);
 
         const categoryHeader = document.createElement('h2');
@@ -26,9 +26,19 @@ gnqButtonArea.addEventListener('submit', (event) => {
 
         const answerEntry = document.createElement('p');
         answerEntry.textContent = trivia.correct_answer;
+        answerEntry.classList.add('hidden');
+        article.append(answerEntry);
+
         questionCardsArea.append(article);
+        answerButton.addEventListener('click', () => {
+          answerEntry.classList.toggle('hidden');
+        });
       });
+    })
+    .catch((error) => {
+      console.log(error);
     });
 });
-//document.querySelector("main")
+
+//document.querySelector("main") <- * My thoughts on the code needed to refresh the question when G.N.Q button is clicked. Will expand later.*
 //main.INNERHTML = ``;
