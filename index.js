@@ -10,7 +10,7 @@ gnqButtonArea.addEventListener('submit', (event) => {
       trivia_questions.results.forEach((trivia) => {
         const article = document.createElement('article');
         article.classList.add('card');
-        gnqButtonArea.append(article);
+        questionCardsArea.append(article);
 
         const categoryHeader = document.createElement('h2');
         categoryHeader.textContent = trivia.category;
@@ -29,7 +29,6 @@ gnqButtonArea.addEventListener('submit', (event) => {
         answerEntry.classList.add('hidden');
         article.append(answerEntry);
 
-        questionCardsArea.append(article);
         answerButton.addEventListener('click', () => {
           answerEntry.classList.toggle('hidden');
         });
