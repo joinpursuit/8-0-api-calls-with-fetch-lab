@@ -12,16 +12,23 @@ gnqButtonArea.addEventListener('submit', (event) => {
         article.setAttribute('class', 'card');
         gnqButtonArea.append(article);
 
-        const h2 = document.createElement('h2');
-        h2.textContent = trivia.category;
-        article.append(h2);
+        const categoryHeader = document.createElement('h2');
+        categoryHeader.textContent = trivia.category;
+        article.append(categoryHeader);
 
-        const p = document.createElement('p');
-        p.textContent = trivia.question;
-        article.append(p);
+        const mainParagraph = document.createElement('p');
+        mainParagraph.textContent = trivia.question;
+        article.append(mainParagraph);
 
+        const answerButton = document.createElement('button');
+        answerButton.textContent = 'Show Answer';
+        article.append(answerButton);
+
+        const answerEntry = document.createElement('p');
+        answerEntry.textContent = trivia.correct_answer;
         questionCardsArea.append(article);
-        // document.querySelector('.card').append(article);
       });
     });
 });
+//document.querySelector("main")
+//main.INNERHTML = ``;
