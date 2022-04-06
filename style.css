@@ -52,7 +52,9 @@ button {
   font-weight: bold;
   padding: 10px;
 }
-
+/* button{
+  margin-top:1rem;
+} */
 button:hover {
   border: 2px solid #4f7d5d;
   background: #5c946e;
