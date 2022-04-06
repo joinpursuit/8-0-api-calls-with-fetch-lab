@@ -7,7 +7,7 @@ const createErrorMessage = (message) => {
   const section = document.createElement('section'); // Creates a section element
   section.classList.add('error'); //adds 'error' as a class for the section and assigns text content
 
-  const paraOne = dcoument.createElement('p');
+  const paraOne = document.createElement('p');
   const paraTwo = document.createElement('p.nessage');
   section.append(paraOne);
   section.append(paraTwo);
