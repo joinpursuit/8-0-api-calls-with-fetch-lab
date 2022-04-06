@@ -1,12 +1,8 @@
-version: 2.1
+version: "2.1"
 orbs:
   cypress: cypress-io/cypress@1
 workflows:
-  build:
+  test:
     jobs:
       - cypress/run:
-          post-steps:
-            - store_artifacts:
-                path: cypress/videos
-            - store_artifacts:
-                path: cypress/screenshots
+          spec: cypress/integration/index.test.js
