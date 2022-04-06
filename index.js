@@ -43,9 +43,7 @@ const makeQuestionCards = (questions) => {
 
 document.addEventListener("click", (e) => {
     if (e.target.className === "buttons") {
-        console.log (e);
-        const answer = e.target.parentElement.children[3];
-        answer.classList.remove("hidden");
+        e.target.parentElement.children[3].classList.remove("hidden");
     }
 })
 
