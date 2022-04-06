@@ -3,17 +3,20 @@ import {categories} from '/categories.js';
 const BASE_URL = "https://opentdb.com/api.php",
       main     = document.getElementById('container'),
       form     = document.querySelector('#new-trivia');
-let amount     = document.querySelector('#trivia-amount'),
-    category   = document.querySelector('#trivia-category');     
+
+    //category   = document.querySelector('#trivia-category');     
 // => Loading categories select
 loadCategories();
 // =>
 form.addEventListener("submit", (event) => {
+    
     event.preventDefault();
     let paremeters = '';
-    //main.remove();
-    amount   = amount.value;
-    category = category.value;
+    main.querySelectorAll('*').forEach(n => n.remove());
+    //amount   = amount.value;
+    //category = category.value;
+    const amount   = document.querySelector('#trivia-amount').value,
+          category = document.querySelector('#trivia-category').value;  
     // => Validating parameters to create URL
     if(amount !== ''){
         paremeters = '?amount='+amount;
@@ -25,6 +28,7 @@ form.addEventListener("submit", (event) => {
 })
 
 function getCards(param) {
+    
     // => Getting data from API
     fetch(`${BASE_URL}${param}`)
         .then((response) => response.json())
@@ -69,7 +73,7 @@ function getAnswer(answer, btnAnswer){
     if(answer.classList.contains('hidden')){
         answer.classList.remove('hidden');
         btnAnswer.innerText = 'Hide Answer';
-        btnAnswer.setAttribute('style', 'background: #ef476f;color: #FFF')
+        btnAnswer.setAttribute('style', 'background: #f4a261;color: #FFF')
     }else{
         answer.classList.add('hidden');
         btnAnswer.innerText = 'Show Answer';
@@ -78,6 +82,7 @@ function getAnswer(answer, btnAnswer){
 }
 
 function loadCategories() {
+    const category   = document.querySelector('#trivia-category');
     for (const [key, value] of Object.entries(categories)) {
         let option = new Option(value, key);
         category.add(option);
