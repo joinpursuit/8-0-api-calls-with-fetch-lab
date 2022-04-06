@@ -12,5 +12,8 @@
   "devDependencies": {
     "cypress": "^8.4.1",
     "live-server": "^1.2.1"
+  },
+  "dependencies": {
+    "html-entities": "^2.3.3"
   }
 }
