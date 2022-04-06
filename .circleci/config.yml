@@ -4,9 +4,4 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/run:
-          post-steps:
-            - store_artifacts:
-                path: cypress/videos
-            - store_artifacts:
-                path: cypress/screenshots
+      - cypress/run
