@@ -6,6 +6,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #fdfcdc;
 }
 
 h1,
@@ -20,15 +21,15 @@ h6 {
 }
 
 header {
-  background: #2a9d8f;
-  border-bottom: 3px solid #4f7d5d;
+  /* background: #2a9d8f;
+  border-bottom: 3px solid #4f7d5d; */
   text-align: center;
 }
 
 header h1 {
   padding: 25px;
-  font-family: 'Erica One', cursive;
-  font-size: 3rem;
+  font-family: 'Rampart One', cursive;
+  font-size: 5rem;
   
   letter-spacing: 1px;
   color: #e9c46a;
@@ -41,25 +42,24 @@ header h1 span {
 }
 .centered {
   display: grid;
-  gap: 5px;
+  gap: 10px;
   grid-template-columns: repeat(3, 1fr);
   margin: 25px auto;
-  width: 75%;
+  width: 80%;
 }
 section {
   margin: 25px auto;
   width: 75%;
+  background-color: #fdfcdc;
 }
-section form {margin: auto; display: table;}
-section form label {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;}
-section form input {padding: 10px; margin: 5px 0;font-family: 'Open Sans', sans-serif;font-size: 1rem;
-  font-weight: 400;background-color: #e9ecef; border: none;}
-section form select {padding: 10px; margin: 5px 0;font-family: 'Open Sans', sans-serif;font-size: 1rem; 
-  font-weight: 400;background-color: #e9ecef; border: none;}
+section form {padding: 0 2rem; margin: auto; display: table;}
+section form label {font-family: 'Open Sans', sans-serif;font-size: 1.2rem;font-weight: 600;color: #006d77;}
+section form input {padding: 1rem; margin: 5px 0;font-family: 'Open Sans', sans-serif;font-size: 1.2rem;
+  font-weight: 400;background-color: #e9ecef;color: #006d77; border: none;}
+section form select {padding: 1rem; margin: 5px 0;font-family: 'Open Sans', sans-serif;font-size: 1.2rem; 
+  font-weight: 400;background-color: #e9ecef;color: #006d77; border: none;}
 section form button {
-  padding: 10px 20px;
+  padding: 1.4rem 2.4rem;
   margin: 10px auto;
   display: block;
   border: 2px solid #2a9d8f;
@@ -68,19 +68,18 @@ section form button {
   color: #fbf5f3;
   cursor: pointer;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1rem; 
+  font-size: 1.2rem; 
   font-weight: 800;
-  
 }
 section form button:hover {
   border: 2px solid #4f7d5d;
   background: #006d77;
 }
 .card {
-  padding: 25px;
-  border: 10px solid #d8f3dc;
+  padding: 20px;
+  border: 0px solid #d8f3dc;
   border-radius: 1px;
-  background-color: #fefae0;
+  background-color: #d8f3dc;
 }
 .card h2 {
   font-family: 'Open Sans', sans-serif;
@@ -100,8 +99,9 @@ section form button:hover {
   color: #264653;
   background-color: #e9c46a;
   border: none;
+  cursor: pointer;
 }
-.card button:hover {cursor: pointer;}
+.card button:hover {background-color: #ffbe0b;}
 .hidden {
   display: none;
 }
