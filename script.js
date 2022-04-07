@@ -43,3 +43,6 @@ getQuestions = (url) => {
       console.log(error);
     });
 };
+
+//used innerHtml instead of innerText due string coercion in innertext
+// and it turing double "" into &quot;
