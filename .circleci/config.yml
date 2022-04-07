@@ -2,11 +2,11 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
 workflows:
-build:
+  build:
     jobs:
       - cypress/run:
-      post-steps:
-      - store_artifacts:
-      path: cypress/videos
-      - store_artifacts:
-      path: cypress/screenshots
+          post-steps:
+            - store_artifacts:
+                path: cypress/videos
+            - store_artifacts:
+                path: cypress/screenshots
