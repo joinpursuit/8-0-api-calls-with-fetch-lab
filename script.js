@@ -1,9 +1,33 @@
-const BASE_URL = "https://opentdb.com/api.php?amount=10";
+let BASE_URL = "";
 let form = document.querySelector("form");
 let main = document.querySelector("main.centered");
+let CATEGORY_URL = "https://opentdb.com/api_category.php";
+
+let selectCategory = document.createElement("select");
+form.append(selectCategory);
+
+fetch(CATEGORY_URL)
+  .then((response) => response.json())
+  .then((json) => {
+    json.trivia_categories.forEach((j) => {
+      let opt = document.createElement("option");
+      opt.textContent = j.name;
+      selectCategory.append(opt);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  document.querySelectorAll("article").forEach((obj) => {
+    obj.remove();
+  });
+
+  let num = document.getElementById("newQuestions").value;
+  BASE_URL = `https://opentdb.com/api.php?amount=${num}`;
   fetch(BASE_URL)
     .then((response) => response.json())
     .then((json) => {
@@ -14,6 +38,7 @@ form.addEventListener("submit", (event) => {
     .catch((error) => {
       console.log(error);
     });
+  document.getElementById("newQuestions").value = ""; //reset text input field to empty
 });
 
 function createTriviaCard(object) {
@@ -32,5 +57,14 @@ function createTriviaCard(object) {
     para2.classList.toggle("hidden");
   });
   article.append(heading, para1, button, para2);
+
+  if (object.difficulty === "hard") {
+    article.style.borderColor = "red";
+  } else if (object.difficulty === "medium") {
+    article.style.borderColor = "yellow";
+  } else {
+    article.style.borderColor = "green";
+  }
+
   return article;
 }

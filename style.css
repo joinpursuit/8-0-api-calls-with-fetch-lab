@@ -59,7 +59,7 @@ button:hover {
 }
 
 .card {
-  border: 3px solid #4f7d5d;
+  border: 3px solid;
   padding: 25px;
 }
 
