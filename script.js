@@ -1,5 +1,24 @@
-const url = "https://opentdb.com/api.php?amount=10";
+const category_url = "https://opentdb.com/api_category.php";
+const base_url = "https://opentdb.com/api.php?amount=10";
 const form = document.querySelector("form");
+const select = document.querySelector("select");
+
+//select the category
+fetch(category_url)
+  .then((response) => {
+    return response.json();
+  })
+  .then((json) => {
+    for (let category of json.trivia_categories) {
+      let option = document.createElement("option");
+      option.value = category.id;
+      option.textContent = category.name;
+      select.append(option);
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -8,7 +27,11 @@ form.addEventListener("submit", (event) => {
   //get the category num from the user input
   let categoryNum = document.getElementById("category").value;
   //use helper function generate and display 10 questions
-  generateTriviaQuestions(url + `&category=${categoryNum}`);
+  if (categoryNum === "random") {
+    generateTriviaQuestions(base_url);
+  } else {
+    generateTriviaQuestions(base_url + `&category=${categoryNum}`);
+  }
 });
 
 function generateTriviaQuestions(url) {
