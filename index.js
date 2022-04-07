@@ -45,9 +45,10 @@ const getNewQuestions = (questions) => {
       } else {
         button.textContent = "Show Answer";
       }
-      // difficulty(question);
     });
-    article.append(question.difficulty, h2, p, pAnswer, button);
+
+    article.append("Difficulty: ", question.difficulty, h2, p, pAnswer, button);
+    difficulty(question, article);
     main.append(article);
   }
 };
@@ -68,20 +69,49 @@ const decodeEntity = (inputStr) => {
   return textarea.value;
 };
 
-// const difficulty = (question) => {
-//   const easy = document.querySelector(".easy");
-//   const medium = document.querySelector("medium");
-//   const hard = document.querySelector(".hard");
+const difficulty = (question, article) => {
+  const easy = document.querySelector(".easy");
+  const medium = document.querySelector(".medium");
+  const hard = document.querySelector(".hard");
 
-//   easy.addEventListener("click", (e) => {
-//     e.preventDefault();
+  if (question.difficulty === "easy") {
+    article.style.border = "3px solid lightgreen";
+  } else if (question.difficulty === "medium") {
+    article.style.border = "3px solid yellow";
+  } else if (question.difficulty === "hard") {
+    article.style.border = "3px solid red";
+  }
 
-//     if (question.difficulty === "medium" || question.difficulty === "hard") {
-//       question.style.display = "none";
-//       // question.hide();
-//     }
-//   });
-// };
+  easy.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    article.style.display = "block";
+
+    if (question.difficulty === "medium" || question.difficulty === "hard") {
+      article.style.display = "none";
+    }
+  });
+
+  medium.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    article.style.display = "block";
+
+    if (question.difficulty === "easy" || question.difficulty === "hard") {
+      article.style.display = "none";
+    }
+  });
+
+  hard.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    article.style.display = "block";
+
+    if (question.difficulty === "easy" || question.difficulty === "medium") {
+      article.style.display = "none";
+    }
+  });
+};
 
 const clearOldQuestions = (oldQuestions) => {
   oldQuestions.innerHTML = "";
