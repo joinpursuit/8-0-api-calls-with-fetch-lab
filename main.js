@@ -25,6 +25,7 @@ form.addEventListener('submit', (event) => {
         button.textContent = 'Show answer';
         answer.textContent = ques.correct_answer;
         article.append(category, question, button, answer)
+
     // when i click the show answer button, i want the answer textContent to appear. this can be done by removing the "hidden" class. I could use.toggle to hide it again if i click the button once more
         button.addEventListener('click',() =>{
           answer.classList.toggle('hidden')

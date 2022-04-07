@@ -1,7 +1,12 @@
-version: "2.1"
+version: 2.1
 orbs:
-  node: circleci/node@4.5.1
+  cypress: cypress-io/cypress@1
 workflows:
-  test:
+  build:
     jobs:
-      - node/test
+      - cypress/run:
+          post-steps:
+            - store_artifacts:
+                path: cypress/videos
+            - store_artifacts:
+                path: cypress/screenshots
