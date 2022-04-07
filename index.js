@@ -45,9 +45,9 @@ const getNewQuestions = (questions) => {
       } else {
         button.textContent = "Show Answer";
       }
+      // difficulty(question);
     });
-    difficulty(question.difficulty);
-    article.append(h2, p, pAnswer, button);
+    article.append(question.difficulty, h2, p, pAnswer, button);
     main.append(article);
   }
 };
@@ -68,7 +68,20 @@ const decodeEntity = (inputStr) => {
   return textarea.value;
 };
 
-const difficulty = (question) => {};
+// const difficulty = (question) => {
+//   const easy = document.querySelector(".easy");
+//   const medium = document.querySelector("medium");
+//   const hard = document.querySelector(".hard");
+
+//   easy.addEventListener("click", (e) => {
+//     e.preventDefault();
+
+//     if (question.difficulty === "medium" || question.difficulty === "hard") {
+//       question.style.display = "none";
+//       // question.hide();
+//     }
+//   });
+// };
 
 const clearOldQuestions = (oldQuestions) => {
   oldQuestions.innerHTML = "";
