@@ -66,3 +66,54 @@ button:hover {
 .hidden {
   display: none;
 }
+
+.easy {
+  width: 15px;
+  height: 15px;
+  border: 2px solid darkgreen;
+  border-radius: 5px;
+  background: darkgreen;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.easy:hover {
+  border: 2px solid green;
+  background: green;
+}
+
+.medium {
+  width: 15px;
+  height: 15px;
+  border: 2px solid gold;
+  border-radius: 5px;
+  background: gold;
+  color: #fbf5f3;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.medium:hover {
+  border: 2px solid yellow;
+  background: yellow;
+}
+
+.hard {
+  width: 15px;
+  height: 15px;
+  border: 2px solid darkred;
+  border-radius: 5px;
+  background: darkred;
+  color: #fbf5f3;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.hard:hover {
+  border: 2px solid red;
+  background: red;
+}

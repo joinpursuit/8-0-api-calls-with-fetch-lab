@@ -1,5 +1,5 @@
 const BASE_URL = "https://opentdb.com/api.php?amount=10";
-// const difficulty
+
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -17,6 +17,7 @@ form.addEventListener("submit", (e) => {
 
 const getNewQuestions = (questions) => {
   const main = document.querySelector("main.centered");
+  clearOldQuestions(main);
 
   for (const question of questions) {
     const article = document.createElement("article");
@@ -45,12 +46,10 @@ const getNewQuestions = (questions) => {
         button.textContent = "Show Answer";
       }
     });
-    difficulty(question);
+    difficulty(question.difficulty);
     article.append(h2, p, pAnswer, button);
     main.append(article);
   }
-  // make a helper function to clear old questions after Get New Questions button is clicked again
-  // clearOldQuestions(main);
 };
 
 const errors = (error) => {
@@ -71,4 +70,6 @@ const decodeEntity = (inputStr) => {
 
 const difficulty = (question) => {};
 
-// const clearOldQuestions = (oldQuestions) => {};
+const clearOldQuestions = (oldQuestions) => {
+  oldQuestions.innerHTML = "";
+};
