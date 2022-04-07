@@ -23,11 +23,12 @@ form.addEventListener('submit', (event) => {
         let button = document.createElement('button');
         button.textContent = 'Show Answer';
         article.append(h2, p, button, p2);
+        button.addEventListener('click', () => {
+          p2.classList.toggle('hidden');
+        });
       });
 
-      button.addEventListener('click', () => {
-        p2.classList.toggle('hidden');
-      });
+      
     })
     .catch((ERROR) => {
       console.log(ERROR);
