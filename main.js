@@ -4,7 +4,7 @@ const BASE_URL ="https://opentdb.com/api.php?amount=10&category=11&difficulty=ea
 // create a variable to equal the element form
 const form = document.querySelector("form");
 // add an event listener to the form when form is selected something will happen 
-form.addEventListener("submit", (e) => {
+form.addEventListener("click", (e) => {
 // prevent default method prevent the page form refreshing 
 e.preventDefault();
 
@@ -37,22 +37,22 @@ function createArticle (data){
         p2.classList.add("hidden")
 
         // each iteration through the results array will have a h2 words with have a key value of category
-        h2.textContent = question.category 
+        h2.textContent = question.category;
         // each iteration through the results array will have p1 t words with a key value of question  
-        p1.textContent = question.question. 
+        p1.textContent = question.question;
 
         // each iteration through the results array will have a button with the words Show Answer 
-        button.textContent = "Show Answer"
+        button.textContent = "Show Answer";
         // // each iteration through the results array p2 words will have a key value of correct answer 
-        p2.textContent = question.correct_answer
+        p2.textContent = question.correct_answer;
         
         // add h1, p1, button and p2 to the article
-        article.append(h2, p1, button, p2) 
+        article.append(h2, p1, button, p2); 
 
         // create a variable for the mail element 
         const main = document.querySelector("main");
         // add the articles to the main element 
-        main.append(article)
+        main.append(article);
 
         // give the button an event listener when you click it something happenes
         button.addEventListener("click", (e) =>{
