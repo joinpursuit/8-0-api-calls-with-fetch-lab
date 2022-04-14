@@ -40,6 +40,18 @@ get10NewQuestionsButton.addEventListener("submit", (event) => {
     heading.innerText = `${question.category}`;
     article.append(heading);
 
+    const difficulty = document.createElement("p");
+    difficulty.innerText = question.difficulty;
+    article.append(difficulty);
+
+    if (difficulty.innerText === "easy") {
+      difficulty.style.color = "green";
+    } else if (difficulty.innerText === "medium") {
+      difficulty.style.color = "yellow";
+    } else if (difficulty.innerText === "hard") {
+      difficulty.style.color = "red";
+    }
+
     const paragraph1 = document.createElement("p");
     const questionString = question.question
       .replaceAll("&quot;", '"')
