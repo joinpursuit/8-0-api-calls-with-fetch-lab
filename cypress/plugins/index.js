@@ -18,4 +18,8 @@
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-}
+  require("cypress-watch-and-reload/plugins")(config);
+  // IMPORTANT: return the config object
+  // because the plugin might have changed it
+  return config;
+};

@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "live-server --port=5000 .",
-    "test": "./node_modules/.bin/cypress open"
+    "start": "live-server --port=5001 .",
+    "test": "npx cypress open"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^8.4.1",
-    "live-server": "^1.2.1"
+    "cypress": "9.7.0",
+    "cypress-watch-and-reload": "1.10.3",
+    "live-server": "1.1.0"
   }
 }
