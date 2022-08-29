@@ -1,10 +1,6 @@
 const url = 'https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple'
 const form = document.querySelector('form')
-
-
-    const centered = document.querySelector('main')
-    
-    let category = 0
+const centered = document.querySelector('main')
 
     form.addEventListener('click', (event) => {
         event.preventDefault()
