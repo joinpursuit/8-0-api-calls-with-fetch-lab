@@ -17,7 +17,7 @@ let Base_URL = `https://opentdb.com/api.php?amount=10`
 
 // Came back and defined entire fetch as variable to then apply to button and dropdown event listeners
 
- //use fetch to access elements in api and define them / set to a variable to be called if dropdown is selected
+ //use fetch to access elements in api and define them / set to a variable to be called as function in event listeners
  const fetchInfo = () => {
     
     fetch(`${Base_URL}`)
@@ -46,7 +46,7 @@ let Base_URL = `https://opentdb.com/api.php?amount=10`
     const question = document.createElement(`p`)
     const answerButton = document.createElement(`button`)
     const answer = document.createElement(`p`)
-
+        
     // add classes to appropriate elements
     article.classList.add(`card`, `${q.difficulty}`) 
     // came back and difficulty class to each article to update border colors (easy, medium, hard)
@@ -57,14 +57,36 @@ let Base_URL = `https://opentdb.com/api.php?amount=10`
     question.textContent = q.question
     answerButton.textContent = `Show Answer`
     answer.textContent = q[`correct_answer`]
+    // element for multiple choice
+    const rightAns = document.createElement(`li`)
+        rightAns.innerText = q[`correct_answer`]
+        
 
     //Append elements to article tag then append article to DOM -> main(class centered)
     article.append(category, question, answerButton, answer)
     document.querySelector(`main.centered`).append(article)
 
-    //add event listener to answer button to reveal (toggle hidden class)
+      // ADD CONDITIONAL IF q.type === `multiple`, to populate wrong answers (wrong -> p tag) and append
+      if(q.type === `multiple`){
+        answer.remove()
+        const wrongList = document.createElement(`ul`)
+        wrongList.append(rightAns)
+
+        q[`incorrect_answers`].forEach( x => {
+            const wrongAns = document.createElement(`li`)
+            wrongAns.innerText = x
+            article.append(wrongList)
+            wrongList.append(wrongAns)
+        })
+    }
+
+    //add event listener to answer button to reveal (toggle hidden class). Came back to 'highlight' correct multiple choice answer
+    
     answerButton.addEventListener(`click`, (e) =>{
         answer.classList.toggle(`hidden`)
+        rightAns.classList.toggle('highlight')
+        
+
     })
 })
 })
@@ -110,19 +132,25 @@ fetch(`https://opentdb.com/api_category.php`)
    
 /* API url for searching based on category -> 
     https://opentdb.com/api.php?amount=10&category=9 
-    -number (id) = options.value
+    -number (id) = options.value -> dropdown.value 
 
 */
 
-// add event listener to dropdown
+// add event listener to dropdown to update base_url if category chosen -> use 'change' for event type
 dropdown.addEventListener(`change`, (e) => {
     Base_URL = `https://opentdb.com/api.php?amount=10&category=${e.target.value}`
     // console.log(`i worked`)
     // console.log(e.target.value)
 })
 
-//append elements to page
+//append dropdown to page
 section.append(dropdown)
 
+
+// ADD MULTIPLE CHOICE ELEMENTS
+/*
+    - go back to fetchInfo and update to grab 'type' key (if === multiple, grab `incorrect_answers` key (array of 3) and `correct_answer` -> already variable 'correct')
+    - display all answers and trigger CSS on correct when answer button is clicked
+*/
 
 

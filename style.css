@@ -82,3 +82,8 @@ button:hover {
   border: 3px solid red;
   padding: 25px;
 }
+
+/* MULTIPLE CHOICE HIGHLIGHT ANSWER*/
+.highlight{
+  background-color: lightblue;
+}
