@@ -16,26 +16,25 @@ form.addEventListener("submit", (event) => {
                 article.classList.add("card");
                 main.append(article);
     
-                const h2 = document.createElement('h2')
-                h2.textContent = q.category
-                article.append(h2);
+                const categories = document.createElement('h2')
+                categories.textContent = q.category
+                article.append(categories);
 
-                const p = document.createElement('p')
-                p.textContent = q.question
-                article.append(p);
+                const questions = document.createElement('p')
+                questions.textContent = q.question
+                article.append(questions);
 
                 const button = document.createElement('button')
                 button.textContent = "Show Answer"
                 article.append(button);
 
-                const p2 = document.createElement('p')
-                p2.textContent = q.correct_answer
-                p2.classList.toggle('hidden')
-                article.append(p2)
-                p2.addEventListener("click", () => {
-                    p2.classList.toggle('hidden');
+                const answers = document.createElement('p')
+                answers.textContent = q.correct_answer
+                answers.classList.toggle('hidden')
+                article.append(answers)
+                answers.addEventListener("click", () => {
+                    answers.classList.toggle('hidden');
                 })
-
         })
     })
         .catch((err) => console.log(err));
