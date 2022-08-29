@@ -45,4 +45,7 @@ function onSubmit(){
         // ask why don't we use onclick? 
     })
     })
+    .catch((error) => {
+        console.log(error)
+    })
 }
