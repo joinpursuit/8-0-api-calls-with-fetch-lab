@@ -27,7 +27,7 @@ let Base_URL = `https://opentdb.com/api.php?amount=10`
     // respJson.results -> array of 10 objects -> forEach()
     
     // console.log(respJson.results[0])
-    /* object format for reach question (element in array) (keys:value): 
+    /* object format forr each question (element in array) (keys:value): 
         category: "Entertainment: Video Games"
         correct_answer: "9"
         difficulty: "medium"
@@ -149,8 +149,8 @@ section.append(dropdown)
 
 // ADD MULTIPLE CHOICE ELEMENTS
 /*
-    - go back to fetchInfo and update to grab 'type' key (if === multiple, grab `incorrect_answers` key (array of 3) and `correct_answer` -> already variable 'correct')
-    - display all answers and trigger CSS on correct when answer button is clicked
+    - go back to fetchInfo and update to grab 'type' key (if === multiple, grab `incorrect_answers` key (array of 3) and `correct_answer` -> already variable 'answer'')
+    - display all answers (ul and li's) and trigger CSS on right answer when answer button is clicked
 */
 
 
