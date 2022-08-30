@@ -19,6 +19,11 @@ form.addEventListener('submit', (event)=>{
     .then((res) => res.json())
     .then((res) => {
         console.log(res)
+
+        // creating the card via dom man
+        const card = document.createElement('card')
+        card.classList.add("card");
+        console.log(card)
     })
 })
 
@@ -38,6 +43,9 @@ form.addEventListener('submit', (event)=>{
 // 821 starting get request, checking api for endpoints
 // 939 get request for every form submission, console log to test
 // 942 creating the 'card' html framework via dom manip
+// 954 created card element , added class attribute, console logged
+// 954 SUCESS
+// 954 pushing 'created card element , added class attribute, console logged'
 //plan 
 
 // after listening to form submission, on submit, create the framework of our card using DOM MANIPUALTION
