@@ -7,7 +7,6 @@ dropdown.append(...[
 ].map(el=>ce(el)));
 
 document.querySelector("form").prepend(dropdown);
-
 document.querySelector("form").addEventListener("submit",(evt)=>{
   evt.preventDefault();
   getResponse(document.querySelector("main"),evt.target.dropdown.value);
@@ -30,13 +29,13 @@ function create_card(el){
   let correct_answer;
   switch(el.type){
     case "boolean":
-      let true_ = ce({tagname:"label",innerText:"True"});
+      let true_ = ce({tagname:"label",innerText : "True"});
       true_.append(ce({tagname:"input",type:"radio",name:id,value:true}))
-      let false_ = ce({tagname:"label",innerText:"False"});
-      false_.append(ce({tagname:"input",type:"radio","id":id+"false",name:id,value:false}));
+      let false_ = ce({tagname:"label",innerText : "False"});
+      false_.append(ce({tagname:"input",type:"radio",name:id,value:false}));
 
-      correct_answer = el.correct_answer?true_:false_;
-      answer.append(true_,false_);
+      correct_answer = el.correct_answer ? true_ : false_;
+      answer.append( true_, false_);
     break;
     case "multiple":
       let acc = [];
@@ -44,37 +43,20 @@ function create_card(el){
       {
         acc.push(ce({tagname:"label",style:"display:Block;margin:15px 3px;",innerHTML:el.incorrect_answers[x]}));
       }
-      correct_answer = ce({tagname:"label",style:"display:Block;margin:15px 3px;",innerText:el.correct_answer});
+      correct_answer = ce({tagname:"label",style:"display:Block;margin:15px 3px;",innerHTML:el.correct_answer});
       acc.push(correct_answer);
 
-      acc = shuffle(acc)
-      for(let x of acc)
-      {
-        x.prepend(ce({tagname:"input",type:"radio",name:id}))
-      }
-      answer.append(...acc);
+      for(let x of acc) x.prepend(ce({tagname:"input",type:"radio",name:id}));
+      answer.append(...shuffle(acc));
     break;
     default:
       error_handling("unknown question type");
   }
-  /* example of data
-    category: "History"
-    ​
-    correct_answer: "Silver"
-    ​
-    difficulty: "easy"
-    ​
-    incorrect_answers: Array(3) [ "Gold", "Juno", "Sword" ]
-    ​
-    question: "Which one of these was not a beach landing site in the Invasion of Normandy?"
-    ​
-    type:
-  */
-  let article = ce({tagname:"article",class:`card ${el.difficulty}`});
 
+  let article = ce({tagname:"article",class:`card ${el.difficulty}`});
   article.append(
     ce({tagname:"h2",innerText : el.category}),
-    ce({tagname:"p",innerHTML:el.question}),
+    ce({tagname:"p",innerHTML : el.question}),
     answer,
     ce({tagname:"button",innerHTML:"Show Answer","event_":{"click":show_correct_answer.bind(correct_answer)}}),
     ce({tagname:"p",class:"hidden",innerText:el.correct_answer}),
@@ -83,18 +65,17 @@ function create_card(el){
 }
 
 function ce(obj){
-  let rst = document.createElement(obj.tagname||"div");
+  let rst = document.createElement(obj.tagname || "div");
   for(let x in obj) 
     switch(x){
       case "tagname": break;
       case "innerHTML":case "innerText": 
-        rst[x]=obj[x]; 
+        rst[x] = obj[x]; 
       break;
       case "event_":
         for(let y in obj[x]) rst.addEventListener(y,obj[x][y],false);
       break;
-      default:
-        rst.setAttribute(x,obj[x]);
+      default: rst.setAttribute(x,obj[x]);
     }
   return rst;
 }
@@ -104,23 +85,16 @@ function show_correct_answer(evt){
   this.classList.add("correct");
 }
 
-function error_handling(text)
-{
-  let main = document.querySelector("main");
-  main.innerHTML = `<p class='error'>${text}</p>`;
+function error_handling(text){
+  document.querySelector("main").innerHTML = `<p class='error'>${text}</p>`;
 }
 
-function shuffle(array) {
+function shuffle(array) { //from stack overflow
   let currentIndex = array.length,  randomIndex;
-  // from stack overflow
-  // While there remain elements to shuffle.
   while (currentIndex != 0) {
-    // Pick a remaining element.
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
+    [array[currentIndex], array[randomIndex]] = [ array[randomIndex], array[currentIndex]];
   }
   return array;
 }
