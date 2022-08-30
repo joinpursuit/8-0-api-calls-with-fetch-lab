@@ -17,14 +17,6 @@ const getData = (url) => {
 
 const createCard = (questions) => {
   for (let question of questions) {
-    console.log(question);
-    const card = `<article class="card">
-    <h2>${question.category}</h2>
-    <p>${question.question}</p>
-    <button>Show Answer</button>
-    <p class="hidden">${question.correct_answer}</p>
-  </article>`;
-
     const article = document.createElement("article");
     article.classList.add("card");
 
@@ -32,7 +24,7 @@ const createCard = (questions) => {
     h2.textContent = question.category;
 
     const p = document.createElement("p");
-    p.textContent = question.question;
+    p.innerText = decodeHtmlEntity(question.question);
 
     const button = document.createElement("button");
     button.textContent = "Show Content";
@@ -52,3 +44,9 @@ const createCard = (questions) => {
 const deleteOldQuestions = () => {
   main.innerHTML = "";
 };
+
+function decodeHtmlEntity(html) {
+  var txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+}
