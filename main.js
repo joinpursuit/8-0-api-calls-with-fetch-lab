@@ -20,10 +20,19 @@ form.addEventListener('submit', (event)=>{
     .then((res) => {
         console.log(res)
 
-        // creating the card via dom man
-        const card = document.createElement('card')
-        card.classList.add("card");
-        console.log(card)
+        // creating the article/card, putting class of card on p2
+        const article = document.createElement('article')
+        article.classList.add("card");
+        // console.log(article)
+        // creating the h2
+        const h2 = document.createElement('h2')
+        // creating the p1
+        const p1 = document.createElement('p')
+        // creating the button
+        const bu = document.createElement('button')
+        // creating the p2, putting class of hidden on p2
+
+        // structuring everything
     })
 })
 
@@ -46,6 +55,8 @@ form.addEventListener('submit', (event)=>{
 // 954 created card element , added class attribute, console logged
 // 954 SUCESS
 // 954 pushing 'created card element , added class attribute, console logged'
+// 1002 created the rest of the article elements (h2,p1,p2,button)
+// 1002 pushing 'created the rest of the article elements (h2,p1,p2,button)'
 //plan 
 
 // after listening to form submission, on submit, create the framework of our card using DOM MANIPUALTION
