@@ -36,7 +36,7 @@ let Base_URL = `https://opentdb.com/api.php?amount=10`
         type: "multiple"
     */
 
-    //Create variable for array of resluts and loop through it
+    //Create variable for array of results and loop through it
    const results = respJson.results
    results.forEach((q) => {
     
@@ -102,6 +102,7 @@ form.addEventListener(`submit`, (e) => {
     document.querySelector(`select`).selectedIndex = 0
     // clear previous q's off page
     document.querySelector(`main`).innerHTML = "" 
+    // run fetch function to populate page
     fetchInfo()
     // resets base url to orginal 'random' API call
     Base_URL = `https://opentdb.com/api.php?amount=10`
