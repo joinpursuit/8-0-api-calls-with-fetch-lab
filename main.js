@@ -5,7 +5,12 @@ const main = document.querySelector("main");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   deleteOldQuestions();
-  const URL = createURL(baseURL, e.target.difficulty.value);
+  const URL = createURL(
+    baseURL,
+    e.target.category.value,
+    e.target.difficulty.value
+  );
+  console.log(URL);
   fetch(URL)
     .then((res) => res.json())
     .then((data) => createAndAppendCard(data.results))
@@ -50,6 +55,12 @@ const decodeHtmlEntity = (html) => {
   return txt.value;
 };
 
-const createURL = (base, diffLevel) => {
-  return base + "&difficulty=" + diffLevel;
+const createURL = (base, categ, diff) => {
+  const keys = ["category", "difficulty"];
+  [categ, diff].forEach((value, i) => {
+    if (value !== "any") {
+      base += "&" + keys[i] + "=" + value;
+    }
+  });
+  return base;
 };
