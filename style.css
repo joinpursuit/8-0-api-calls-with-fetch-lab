@@ -51,6 +51,7 @@ button {
   cursor: pointer;
   font-weight: bold;
   padding: 10px;
+  margin-top: 10px;
 }
 
 button:hover {
@@ -59,10 +60,29 @@ button:hover {
 }
 
 .card {
-  border: 3px solid #4f7d5d;
+  border: 5px solid #4f7d5d;
+  border-radius: 10px;
   padding: 25px;
 }
 
 .hidden {
   display: none;
+}
+
+.form {
+  border: 2px solid #4f7d5d;
+  border-radius: 10px;
+  padding: 4px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+}
+
+.form-control {
+  margin-top: 10px;
+  height: 60%;
+}
+
+.form-control option {
+  font-size: 45px;
 }
