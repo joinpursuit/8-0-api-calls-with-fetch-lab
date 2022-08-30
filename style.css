@@ -59,10 +59,20 @@ button:hover {
 }
 
 .card {
-  border: 3px solid #4f7d5d;
   padding: 25px;
 }
 
 .hidden {
   display: none;
+}
+
+.easy {
+  border: 3px solid #4f7d5d;
+}
+.medium {
+  border: 3px solid rgb(255, 221, 0);
+}
+
+.hard {
+  border: 3px solid red;
 }

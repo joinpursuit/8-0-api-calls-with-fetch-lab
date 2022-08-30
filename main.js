@@ -17,8 +17,10 @@ const getData = (url) => {
 
 const createCard = (questions) => {
   for (let question of questions) {
+    console.log(question);
     const article = document.createElement("article");
     article.classList.add("card");
+    article.classList.add(question.difficulty);
 
     const h2 = document.createElement("h2");
     h2.textContent = question.category;
@@ -45,8 +47,8 @@ const deleteOldQuestions = () => {
   main.innerHTML = "";
 };
 
-function decodeHtmlEntity(html) {
+const decodeHtmlEntity = (html) => {
   var txt = document.createElement("textarea");
   txt.innerHTML = html;
   return txt.value;
-}
+};
