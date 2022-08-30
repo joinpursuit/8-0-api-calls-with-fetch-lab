@@ -59,10 +59,35 @@ button:hover {
 }
 
 .card {
-  border: 3px solid #4f7d5d;
+  border: 3px solid greenyellow;
   padding: 25px;
 }
 
 .hidden {
   display: none;
+}
+
+.hard {
+  border: 3px solid red;
+}
+
+form{
+  grid-column: 1/4;
+}
+select{ 
+  width: 500px;
+  height: 80px;
+  padding-left: 10px;
+  margin-right: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+.easy {
+  border: 3px solid #4f7d5d;
+}
+.medium {
+  border: 3px solid red;
 }
