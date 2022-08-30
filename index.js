@@ -98,7 +98,13 @@ const form = document.querySelector(`form`)
 form.addEventListener(`submit`, (e) => {
     // prevent page from refreshing when submit button is pressed
     e.preventDefault()
+    //reset dropdown box
+    document.querySelector(`select`).selectedIndex = 0
+    // clear previous q's off page
+    document.querySelector(`main`).innerHTML = "" 
     fetchInfo()
+    // resets base url to orginal 'random' API call
+    Base_URL = `https://opentdb.com/api.php?amount=10`
 })
 
 // CREATE NEW DROPDOWN FORM TO CHOOSE CATEGORY
