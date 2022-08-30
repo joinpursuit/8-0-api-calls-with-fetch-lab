@@ -66,3 +66,24 @@ button:hover {
 .hidden {
   display: none;
 }
+
+/* ADDING CSS FOR EASY MEDIUM HARD CLASSES */
+.easy {
+  border: 3px solid #4f7d5d;
+  padding: 25px;
+}
+
+.medium {
+  border: 3px solid orange;
+  padding: 25px;
+}
+
+.hard {
+  border: 3px solid red;
+  padding: 25px;
+}
+
+/* MULTIPLE CHOICE HIGHLIGHT ANSWER*/
+.highlight{
+  background-color: lightblue;
+}
