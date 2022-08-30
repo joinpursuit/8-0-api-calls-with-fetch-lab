@@ -8,7 +8,8 @@ form.addEventListener("submit", (e) => {
   const URL = createURL(
     baseURL,
     e.target.category.value,
-    e.target.difficulty.value
+    e.target.difficulty.value,
+    e.target.type.value
   );
   console.log(URL);
   fetch(URL)
@@ -19,7 +20,7 @@ form.addEventListener("submit", (e) => {
 
 const createAndAppendCard = (questions) => {
   for (let question of questions) {
-    // console.log(question);
+    console.log(question);
     const article = document.createElement("article");
     article.classList.add("card");
     article.classList.add(question.difficulty);
@@ -31,15 +32,25 @@ const createAndAppendCard = (questions) => {
     p.innerText = decodeHtmlEntity(question.question);
 
     const button = document.createElement("button");
-    button.textContent = "Show Content";
+    button.textContent = "Show Answer";
     button.addEventListener("click", (e) => {
       e.target.nextElementSibling.classList.toggle("hidden");
     });
 
     const p2 = document.createElement("p");
-    p2.classList.add("hidden");
-    p2.textContent = decodeHtmlEntity(question.correct_answer);
-    article.append(h2, p, button, p2);
+    if (question.type === "multiple") {
+      const shuffledAnswers = shuffleAnswers(
+        ...question.incorrect_answers,
+        question.correct_answer
+      );
+
+      p2.textContent += decodeHtmlEntity(shuffledAnswers);
+    }
+
+    const p3 = document.createElement("p");
+    p3.textContent = decodeHtmlEntity(question.correct_answer);
+    p3.classList.add("hidden");
+    article.append(h2, p, p2, button, p3);
 
     main.append(article);
   }
@@ -55,12 +66,16 @@ const decodeHtmlEntity = (html) => {
   return txt.value;
 };
 
-const createURL = (base, categ, diff) => {
-  const keys = ["category", "difficulty"];
-  [categ, diff].forEach((value, i) => {
+const createURL = (base, categ, diff, type) => {
+  const keys = ["category", "difficulty", "type"];
+  [categ, diff, type].forEach((value, i) => {
     if (value !== "any") {
       base += "&" + keys[i] + "=" + value;
     }
   });
   return base;
+};
+
+const shuffleAnswers = (...answers) => {
+  return answers.sort((a, b) => 0.5 - Math.random());
 };
