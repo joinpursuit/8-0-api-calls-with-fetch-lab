@@ -44,15 +44,31 @@ fetch(BASE_URL)
     p2.innerText = all.correct_answer
 
     article.append(p2)
-
+    // create button element
     const button = document.createElement("button")
+    // button description
     button.innerText = "Show Answer"
+    // when button is clicked, the hidden class will toggle for the correct answer
     button.addEventListener("click",()=>{
         p2.classList.toggle('hidden')
        
     })
 
     article.append(button)
+
+    // create difficulty 
+    const diff = document.createElement("difficulty")
+    diff.innerText= all.difficulty
+    
+    article.append(diff)
+
+    if(diff.innerText === "easy"){
+        article.classList.add("yellow")
+    }else if(diff.innerText === "medium"){
+        article.classList.add("green")
+    }else if(diff.innerText === "hard"){
+        article.classList.add("red")
+    }
     });
   })
 

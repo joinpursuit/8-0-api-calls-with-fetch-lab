@@ -62,9 +62,21 @@ button:hover {
   color: black;
   border: 3px solid #4f7d5d;
   padding: 25px;
-  background: red;
+  
 }
 
 .hidden {
   display: none;
+}
+
+.red{
+  background: red
+}
+
+.yellow{
+  background: yellow
+}
+
+.green{
+  background:green
 }
