@@ -1,12 +1,12 @@
-const BASE_URL = `https://opentdb.com/api_config.php`;
+const BASE_URL = "https://opentdb.com/api.php?amount=10";
 
 // need to grab the form and main element.
 const form = document.querySelector("form");
 const main = document.querySelector("main");
 
 //creat an eventListener, submit button and prevent the default action.
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
   trivQuestions(BASE_URL);
 });
 
@@ -17,8 +17,8 @@ function trivQuestions(url) {
       return response.json();
       //json data is converted into js data and then iterated through an array.
     })
-    .then((data) => {
-      data.results.forEch((question) => {
+    .then((result) => {
+      result.results.forEach((question) => {
         const art = document.createElement("article");
         const h2 = document.createElement("h2");
         const p = document.createElement("p");
