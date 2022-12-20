@@ -47,8 +47,8 @@ function displayTriviaCards( BASE_URL ){
 
             mainSection.append(article);
 
-            showAnsButton.addEventListener("click", () => {
-                answerElement.classList.remove("hidden");
+            showAnsButton.addEventListener("click", handleClick => {
+                handleClick.target.parentNode.lastChild.classList.remove("hidden");
             });
         }
     }).catch(displayError);
