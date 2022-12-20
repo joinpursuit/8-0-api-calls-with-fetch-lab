@@ -20,23 +20,19 @@ function displayTriviaCards( BASE_URL ){
             
             const { category, question, correct_answer } = card; 
             const mainSection = document.querySelector("main")
-
             const article = document.createElement("article");
             article.classList.add("card");
 
             const heading2 = document.createElement("h2");
             heading2.innerText = category;
-
             article.append(heading2);
 
             const questionElement = document.createElement("p");
             questionElement.innerText = question.replace(/&quot;/g, '"');
-
             article.append(questionElement);
 
             const showAnsButton = document.createElement("button");
             showAnsButton.innerText = "Show Answer";
-
             article.append(showAnsButton);
 
             const answerElement = document.createElement("p");
@@ -44,7 +40,6 @@ function displayTriviaCards( BASE_URL ){
             answerElement.innerText = correct_answer;
 
             article.append(answerElement);
-
             mainSection.append(article);
 
             showAnsButton.addEventListener("click", handleClick => {
@@ -53,5 +48,4 @@ function displayTriviaCards( BASE_URL ){
         }
     }).catch(displayError);
 };
-
 function displayError(error){};
