@@ -21,7 +21,19 @@ fetch(BASE_URL)
       buttonAnswers.innerHTML = "Show Answer";
 
       buttonAnswers.addEventListener("click", () => {
-        console.log(question.correct_answer);
+        if ((question.difficulty === "medium")) {
+          article.style.backgroundColor = "yellow";
+          let subH3 = document.createElement('h3')
+          subH3.innerHTML = question.difficulty
+          article.appendChild(subH3)
+        } else if (question.difficulty === "easy") {
+            article.style.backgroundColor = "green";
+          let subH3 = document.createElement('h3')
+          subH3.innerHTML = question.difficulty
+          article.appendChild(subH3)
+        } else {
+            article.style.backgroundColor = "red";
+        }
 
         pAnswer.innerHTML = question.correct_answer;
         pAnswer.style.display = "inline";
