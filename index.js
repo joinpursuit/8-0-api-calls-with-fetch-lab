@@ -44,3 +44,12 @@ async function getQuestions(event){
 }
 
 
+function reveal(event){
+    const hidden = event.target.nextSibling
+
+    hidden.classList.toggle("hidden")
+
+    let buttonText = (hidden.classList.contains("hidden") ?  "Show Answer": "Hide Answer");
+    event.target.innerText = buttonText
+}
+
