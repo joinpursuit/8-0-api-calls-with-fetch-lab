@@ -12,14 +12,14 @@ fetch(BASE_URL)
       let p = document.createElement("p");
       let pAnswer = document.createElement("p");
 
-      article.setAttribute("id", "card");
+      article.setAttribute("class", "card");
       h2.innerHTML = question.category;
       p.innerHTML = question.question;
       pAnswer.setAttribute("class", "hidden");
 
       let buttonAnswers = document.createElement("button");
       buttonAnswers.innerHTML = "Show Answer";
-      
+
       buttonAnswers.addEventListener("click", () => {
         console.log(question.correct_answer);
 
