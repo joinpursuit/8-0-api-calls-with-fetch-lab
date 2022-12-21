@@ -63,6 +63,14 @@ button:hover {
   padding: 25px;
 }
 
+.card.medium {
+  border: 3px solid #bcc73f;
+}
+
+.card.hard{
+  border: 3px solid rgb(162, 94, 94);
+}
+
 .hidden {
   display: none;
 }

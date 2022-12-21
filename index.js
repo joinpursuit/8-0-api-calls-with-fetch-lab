@@ -17,10 +17,15 @@ async function getQuestions(event){
 
     let thisThat = response.results
 
+    console.log(thisThat[0])
+
     
     thisThat.forEach((trivia) => {
         const category = document.createElement("h2")
         category.innerText = trivia.category
+
+        const difficulty = document.createElement("p")
+        difficulty.innerText = trivia.difficulty[0].toUpperCase() + trivia.difficulty.slice(1)
         
         const question = document.createElement("p")
         question.innerHTML = trivia.question
@@ -36,9 +41,14 @@ async function getQuestions(event){
 
         const article = document.createElement("article")
         article.setAttribute("class", "card")
+        if(trivia.difficulty != "easy"){
+            article.setAttribute("class", `card ${trivia.difficulty}`)
+        }
 
-        article.append(category, question, button, correctAnswer)
+        article.append(category, difficulty, question, button, correctAnswer)
         cardSection.append(article)
+
+
     })
 
 }
