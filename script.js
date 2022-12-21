@@ -33,7 +33,10 @@ button.addEventListener('click', (event) => {
         }
         main.append(newArticle)
      }
-    });
+    })
+    .catch((e) => {
+        console.log(e)
+    })
     
 })
 
