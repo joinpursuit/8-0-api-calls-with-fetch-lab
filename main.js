@@ -8,14 +8,28 @@ fetch(BASE_URL)
   .then((response) => {
     response.results.map((question) => {
       let article = document.createElement("article");
-      article.setAttribute("id", "card");
       let h2 = document.createElement("h2");
-      h2.innerHTML = question.category;
-      let p = document.createElement('p');
-      p.innerHTML = question.question
+      let p = document.createElement("p");
+      let pAnswer = document.createElement("p");
 
-      article.prepend(h2,p);
-      main.append(article)
+      article.setAttribute("id", "card");
+      h2.innerHTML = question.category;
+      p.innerHTML = question.question;
+      pAnswer.setAttribute("class", "hidden");
+
+      let buttonAnswers = document.createElement("button");
+      buttonAnswers.innerHTML = "Show Answer";
+      
+      buttonAnswers.addEventListener("click", () => {
+        console.log(question.correct_answer);
+
+        pAnswer.innerHTML = question.correct_answer;
+        pAnswer.style.display = "inline";
+        article.appendChild(pAnswer);
+      });
+
+      article.prepend(h2, p, buttonAnswers);
+      main.append(article);
     });
   })
   .catch((err) => {
