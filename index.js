@@ -1,26 +1,60 @@
 /* <---------------Selectors--------------> */
 const newQBtn = document.querySelector('button[type="submit"]')
-const cardSection = document.querySelector("main.centered")
+const cardSection = document.querySelector("main.centered");
+const select = document.querySelector("select")
 
 /* <---------------Event Listeners--------------> */
+document.addEventListener("DOMContentLoaded", addCategories)
 newQBtn.addEventListener("click", getQuestions)
 
 /* <---------------Functions--------------> */
+async function loadCategories(){
+    const fetched = await fetch("https://opentdb.com/api_category.php")
+
+    const jsonResponse =  await fetched.json()
+
+    return jsonResponse
+}
+
+async function addCategories(){
+    let info = await loadCategories()
+
+    let option = document.createElement("option")
+    option.setAttribute("value", `All`)
+    option.innerText = "All"
+    select.append(option)
+
+    info.trivia_categories.forEach(category => {
+        let option = document.createElement("option")
+        option.setAttribute("value", `${category.name}`)
+        option.innerText = category.name
+        select.append(option)
+    })
+}
 
 async function getQuestions(event){
     event.preventDefault()
     cardSection.innerHTML = ""
 
-    const abc = await fetch("https://opentdb.com/api.php?amount=10");
+    const urlToFetch ="https://opentdb.com/api.php?amount=10"
+    const category = select.value
+    let endpoint = ""
 
-    let response = await abc.json()
+    if(category !== "All"){
+        let info = await loadCategories()
 
-    let thisThat = response.results
+        let value = info.trivia_categories.find(element => element.name == category)
 
-    console.log(thisThat[0])
+        endpoint = `&category=${value.id}`
+    }
 
+    const fetched = await fetch(urlToFetch + endpoint);
+
+    let jsonResponse = await fetched.json()
+
+    let responseResults = jsonResponse.results
     
-    thisThat.forEach((trivia) => {
+    responseResults.forEach((trivia) => {
         const category = document.createElement("h2")
         category.innerText = trivia.category
 
@@ -53,7 +87,6 @@ async function getQuestions(event){
 
 }
 
-
 function reveal(event){
     const hidden = event.target.nextSibling
 
@@ -62,4 +95,3 @@ function reveal(event){
     let buttonText = (hidden.classList.contains("hidden") ?  "Show Answer": "Hide Answer");
     event.target.innerText = buttonText
 }
-

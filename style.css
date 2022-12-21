@@ -23,6 +23,8 @@ header {
   background: #5c946e;
   border-bottom: 3px solid #4f7d5d;
   color: #fbf5f3;
+  display:flex;
+  align-items: center;
 }
 
 header h1 {
@@ -36,11 +38,21 @@ header h1 span {
 }
 
 .centered {
-  display: grid;
-  gap: 15px;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: center;
   margin: 25px auto;
   width: 75%;
+}
+
+main.centered{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+form select{
+  padding: 7px;
+  font-size: 16px;
 }
 
 button {
