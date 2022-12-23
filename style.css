@@ -44,10 +44,10 @@ header h1 span {
 }
 
 button {
-  border: 2px solid #5c946e;
+  border: 2px solid blue;
   border-radius: 5px;
-  background: #4f7d5d;
-  color: #fbf5f3;
+  background: #fbf5f3;
+  color: #5c946e;
   cursor: pointer;
   font-weight: bold;
   padding: 10px;
@@ -61,6 +61,7 @@ button:hover {
 .card {
   border: 3px solid #4f7d5d;
   padding: 25px;
+  
 }
 
 .hidden {
