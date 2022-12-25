@@ -20,8 +20,8 @@ function triviaQuestions(url){
 }
 
 function updateButtonText() {
-    document.getElementById("submit").textContent  = "Get New Questions"; // // Update the text of the button
-    document.getElementById("submit").disabled = false;
+    document.getElementById("submit").textContent  = "Get New Questions"; // Update the text of the button
+    document.getElementById("submit").disabled = false;                  // 
 }
 
 function createCard(card){

@@ -14,12 +14,21 @@
     </header>
     <section class="centered">
       <form>
-        <fieldset>
-          <legend>Choose your Difficulty Level</legend>
+        <fieldset> <legend>Choose your Difficulty Level</legend>
             <label for = "easy"><input class = "difficulty" type = "radio" name = "difficulty" id = "easy" onclick="updateButtonText()" />Easy</label>
             <label for = "medium"><input class = "difficulty" type = "radio" name = "difficulty" id = "medium" onclick="updateButtonText()" />Medium</label>
             <label for = "hard"><input class = "difficulty" type = "radio" name = "difficulty" id = "hard" onclick="updateButtonText()" />Hard</label>
         </fieldset><br/>
+        <fieldset> <legend>Choose A Category</legend>
+         <select id="category" name="category" class = "category">
+            <option value="">Select a Category:</option>
+            <option value="GK">General Knowledge</option>
+            <option value="history">History</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="vehicles">Vehicles</option>
+            <option value="sports">Sports</option>
+         </select>
+        </fieldset>
         <button type = "submit" id = "submit" disabled>Choose A Difficulty Level</button>
       </form>          
     </section>

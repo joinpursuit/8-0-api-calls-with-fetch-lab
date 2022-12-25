@@ -72,7 +72,7 @@ button:hover {
   display: none;
 }
 
-.difficulty{
+.difficulty,.category{
   margin:20px;
   padding:10px;
   text-align: center;
