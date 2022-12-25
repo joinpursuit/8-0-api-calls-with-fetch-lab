@@ -14,11 +14,14 @@
     </header>
     <section class="centered">
       <form>
-        <label for="easy"><input type="radio" name = "difficulty" value="easy" onclick="showButton()"/>Easy</label><br/>
-        <label for="medium"><input type="radio" name = "difficulty" value = "medium" onclick="showButton()"/>Medium</label><br/>
-        <label for="hard"><input type="radio" name="difficulty" value="hard" onclick="showButton()"/>Hard</label><br/>
-        <button type="submit" id="submit">Get New Questions</button>
-      </form>
+        <fieldset>
+          <legend>Choose your Difficulty Level</legend>
+            <label for = "easy"><input class = "difficulty" type = "radio" name = "difficulty" id = "easy" onclick="updateButtonText()" />Easy</label>
+            <label for = "medium"><input class = "difficulty" type = "radio" name = "difficulty" id = "medium" onclick="updateButtonText()" />Medium</label>
+            <label for = "hard"><input class = "difficulty" type = "radio" name = "difficulty" id = "hard" onclick="updateButtonText()" />Hard</label>
+        </fieldset><br/>
+        <button type = "submit" id = "submit" disabled>Choose A Difficulty Level</button>
+      </form>          
     </section>
     <main class="centered">
       <!-- Your `.card` elements should show up here. -->
