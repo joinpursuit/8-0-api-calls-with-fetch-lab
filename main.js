@@ -1,45 +1,45 @@
-const url = "https://opentdb.com/api.php?amount=10";
+const BASE_URL = "https://opentdb.com/api.php?amount=10";
 
-//for(const card of cards){
-    const main = document.querySelector('main');
-    const article = document.createElement('article');
-    const h2 = document.createElement('h2');
-    const p1 = document.createElement('p');
-    const p2 = document.createElement('p');
-    const button = document.createElement('button')
-    const form = document.querySelector('form');
-
-    main.append(article);
-    article.setAttribute('class', 'card');
-
-    article.prepend(h2);
-    article.append(p1);
-    article.append(button);
-    article.append(p2);
-
-    p1.innerText = 'QUESTIONS'
-    p2.setAttribute('class', 'hidden');
-    p2.innerText = 'CORRECT ANSWERS'
-//}
-
-form.addEventListener('submit', click => {
-    click.preventDefault();
-
-
+const form = document.querySelector('form');
+form.addEventListener('submit', submitEvent => {
+    submitEvent.preventDefault();
+    triviaQuestions(BASE_URL)
 })
 
-function triviaQuestions(question){
-    fetch(`${url}/${question}`)
+function triviaQuestions(url){
+    fetch(url)
         .then((response) => response.json())
-        .then((resultInJS) => {
-            resultInJS.forEach(question => {
-                p1.textContent = question
-                console.log(p1,question)
-            })
+        .then(({results}) => { // results is destructuring object
+            console.log(results) // an array of cards
+            results.forEach(element => { createCard(element)    
+            });
         })
         .catch((error) => {
             console.log(error)
         })
 }
 
-triviaQuestions()
+function createCard(card){
+    const {question,correct_answer,category,difficulty,incorrect_answers} = card // destructuring object
+
+    const main = document.querySelector("main")
+    const article = document.createElement("article");
+    article.setAttribute('class', 'card');
+
+    const h2 = document.createElement("h2");
+    
+    const pQuestion = document.createElement("p");
+    pQuestion.innerText = question.replaceAll('&quot','"').replaceAll('&#039',"'").replaceAll('&amp','&').replaceAll(';','')
+
+    const pAnswer = document.createElement("p");
+    pAnswer.classList.add("hidden");
+    pAnswer.innerText = correct_answer;
+
+    const button = document.createElement("button");
+    button.addEventListener("click",handleClick => {
+        pAnswer.classList.remove("hidden")
+    })
+    
+    article.append(h2, pQuestion, button, pAnswer);
+    main.append(article);
+}
