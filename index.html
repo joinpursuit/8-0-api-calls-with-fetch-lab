@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trivia Questions</title>
     <link rel="stylesheet" href="style.css" />
+    <script defer src="main.js"></script>
   </head>
   <body>
     <header>
@@ -13,7 +14,10 @@
     </header>
     <section class="centered">
       <form>
-        <button type="submit">Get New Questions</button>
+        <button id="submit" type="submit">Get New Questions</button>
+        <label><input class="a" type="radio" name="difficulty" value="easy">Easy</label>
+        <label><input class="a" type="radio" name="difficulty" value="medium">Medium</label>
+        <label><input class="a" type="radio" name="difficulty" value="hard">Hard</label>
       </form>
     </section>
     <main class="centered">
