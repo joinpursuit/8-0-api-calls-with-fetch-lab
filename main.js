@@ -19,9 +19,13 @@ function triviaQuestions(url){
         })
 }
 
-function updateButtonText() {
-    document.getElementById("submit").textContent  = "Get New Questions"; // Update the text of the button
-    document.getElementById("submit").disabled = false;                  // 
+// function updateButtonText() {
+//     document.getElementById("submit").textContent  = "Get New Questions"; // Update the text of the button
+//     document.getElementById("submit").disabled = false;                  // 
+// }
+
+function colorForDifficulty(cardDifficulty){
+    return cardDifficulty === "hard" ? "#c50d66" : cardDifficulty === "medium" ? "#fdffab" : "#0ced26";
 }
 
 function createCard(card){
@@ -30,6 +34,8 @@ function createCard(card){
     const main = document.querySelector("main")
     const article = document.createElement("article");
     article.setAttribute('class', 'card');
+
+    article.style.borderColor = colorForDifficulty(difficulty);
 
     const h2 = document.createElement("h2");
     
