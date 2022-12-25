@@ -14,7 +14,10 @@
     </header>
     <section class="centered">
       <form>
-        <button type="submit">Get New Questions</button>
+        <label for="easy"><input type="radio" name = "difficulty" value="easy" onclick="showButton()"/>Easy</label><br/>
+        <label for="medium"><input type="radio" name = "difficulty" value = "medium" onclick="showButton()"/>Medium</label><br/>
+        <label for="hard"><input type="radio" name="difficulty" value="hard" onclick="showButton()"/>Hard</label><br/>
+        <button type="submit" id="submit">Get New Questions</button>
       </form>
     </section>
     <main class="centered">

@@ -19,9 +19,14 @@ function triviaQuestions(url){
         })
 }
 
+function showButton() {
+    document.getElementById("submitButton").classList.add("visible");
+}
+
 function createCard(card){
     const {question,correct_answer,category,difficulty,incorrect_answers} = card // destructuring object
 
+    //const getQuestionButton = document.querySelector()
     const main = document.querySelector("main")
     const article = document.createElement("article");
     article.setAttribute('class', 'card');
