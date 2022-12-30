@@ -18,6 +18,7 @@ const updatePage =(question) => {
     article.append(questionText);
 
     let showAnswerButton = document.createElement("button");
+    // showAnswerButton.textContent =`reveal answer`;
     article.append(showAnswerButton);
 
     let answer = document.createElement("p");
