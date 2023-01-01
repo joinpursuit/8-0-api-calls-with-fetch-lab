@@ -6,8 +6,19 @@ form.addEventListener("submit", (event) => {
   getTriviaInfo();
 })
 
+
 function getTriviaInfo(){
-    fetch(BASE_URL)
+    let str ="";
+    if (difficulty.selectedIndex === 0){
+        str="&difficulty=easy";
+    }
+    if (difficulty.selectedIndex === 1){
+        str="&difficulty=medium";
+    }
+    if (difficulty.selectedIndex === 2){
+        str="&difficulty=hard";
+    }
+    fetch(BASE_URL+str)
     .then((response) => response.json())
     .then((result) => {
         const question = createCard(result);
@@ -45,6 +56,15 @@ function createCard(result){
         button.addEventListener("click", () => {
             p2.classList.toggle("hidden");
         })    
+        if (result.results[i].difficulty === "easy") {
+            card.style.borderColor = "green"; 
+        }
+        if (result.results[i].difficulty === "medium") {
+            card.style.borderColor = "yellow"; 
+        }
+        if (result.results[i].difficulty === "hard") {
+            card.style.borderColor = "red";  
+        }
     }
     return card;
 }
