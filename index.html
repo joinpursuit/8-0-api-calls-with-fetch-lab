@@ -6,15 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trivia Questions</title>
     <link rel="stylesheet" href="style.css" />
+    <script src = "main.js" defer></script>
   </head>
   <body>
     <header>
       <h1>Trivia Questions</h1>
     </header>
     <section class="centered">
+      <div id="color-legend"></div>
       <form>
-        <button type="submit">Get New Questions</button>
-      </form>
+        <fieldset> <legend>Choose your Difficulty Level</legend>
+          <label for = "easy"><input class = "difficulty" type = "radio" name = "difficulty" id = "easy" onclick="updateButtonText()" />
+            <div class="color-item green">Easy</div>
+          </label>
+          <label for = "medium"><input class = "difficulty" type = "radio" name = "difficulty" id = "medium" onclick="updateButtonText()" />
+            <div class="color-item yellow">Medium</div>
+          </label>
+          <label for = "hard"><input class = "difficulty" type = "radio" name = "difficulty" id = "hard" onclick="updateButtonText()" />Hard
+            <div class="color-item red">Hard</div>
+          </label>
+        </fieldset><br/>
+        <fieldset> <legend>Choose A Category</legend>
+         <select id="category" name="category" class = "category">
+            <option value="">Select a Category:</option>
+            <option value="GK">General Knowledge</option>
+            <option value="history">History</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="vehicles">Vehicles</option>
+            <option value="sports">Sports</option>
+         </select>
+        </fieldset> <br>
+        
+        <button type = "submit" id = "submit">Get New Questions</button>
+      </div>
+      </form>          
     </section>
     <main class="centered">
       <!-- Your `.card` elements should show up here. -->
