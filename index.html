@@ -13,11 +13,18 @@
       <h1>Trivia Questions</h1>
     </header>
     <section class="centered">
+      <div id="color-legend"></div>
       <form>
         <fieldset> <legend>Choose your Difficulty Level</legend>
-            <label for = "easy"><input class = "difficulty" type = "radio" name = "difficulty" id = "easy" onclick="updateButtonText()" />Easy</label>
-            <label for = "medium"><input class = "difficulty" type = "radio" name = "difficulty" id = "medium" onclick="updateButtonText()" />Medium</label>
-            <label for = "hard"><input class = "difficulty" type = "radio" name = "difficulty" id = "hard" onclick="updateButtonText()" />Hard</label>
+          <label for = "easy"><input class = "difficulty" type = "radio" name = "difficulty" id = "easy" onclick="updateButtonText()" />
+            <div class="color-item green">Easy</div>
+          </label>
+          <label for = "medium"><input class = "difficulty" type = "radio" name = "difficulty" id = "medium" onclick="updateButtonText()" />
+            <div class="color-item yellow">Medium</div>
+          </label>
+          <label for = "hard"><input class = "difficulty" type = "radio" name = "difficulty" id = "hard" onclick="updateButtonText()" />Hard
+            <div class="color-item red">Hard</div>
+          </label>
         </fieldset><br/>
         <fieldset> <legend>Choose A Category</legend>
          <select id="category" name="category" class = "category">
@@ -28,8 +35,10 @@
             <option value="vehicles">Vehicles</option>
             <option value="sports">Sports</option>
          </select>
-        </fieldset>
+        </fieldset> <br>
+        
         <button type = "submit" id = "submit">Get New Questions</button>
+      </div>
       </form>          
     </section>
     <main class="centered">

@@ -19,13 +19,8 @@ function triviaQuestions(url){
         })
 }
 
-// function updateButtonText() {
-//     document.getElementById("submit").textContent  = "Get New Questions"; // Update the text of the button
-//     document.getElementById("submit").disabled = false;                  // 
-// }
-
 function colorForDifficulty(cardDifficulty){
-    return cardDifficulty === "hard" ? "#c50d66" : cardDifficulty === "medium" ? "#fdffab" : "#0ced26";
+    return cardDifficulty === "hard" ? "ee0877" : cardDifficulty === "medium" ? "#fdffab" : "#0ced26";
 }
 
 function createCard(card){

@@ -81,3 +81,29 @@ button:hover {
 fieldset{
   border: 5px solid  #4f7d5d;;
 }
+
+.color-item {
+    display: flex;
+    width: 60;
+    height: 50px;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: center;
+}
+
+.color-item.green {
+  background-color: #0ced26;
+  border: 1px solid #0ced26
+}
+
+.color-item.yellow {
+  background-color: #fdffab;
+  border: 1px solid #fdffab
+}
+
+.color-item.red {
+  background-color:#ee0877;
+  border: 1px solid #ee0877
+}
