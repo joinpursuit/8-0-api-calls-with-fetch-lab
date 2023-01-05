@@ -17,10 +17,10 @@ function display (BASE_URL) {
 // translate into json
     fetch(BASE_URL)
 // catches promise...inter-changeable
-    .then(response => {
-        // console.log(response)
-        response.json()
-    })
+    .then(response => response.json()
+    // you can also return the promise with 
+    // return response.json()
+    )
 // extract results from API
 // results = response to promise
 // object destructured
