@@ -17,6 +17,7 @@ function getTriviaCardData(event) {
         .catch((error) => {
             createErrorMessage(error)
         })
+}
 
 function createTriviaCards(triviaCardData) {
     const triviaCardArray = triviaCardData.results;
@@ -28,8 +29,10 @@ function createTriviaCards(triviaCardData) {
                 <p>${card.question}</p>
             `;
         const button = document.createElement("button");
-            button.innerHTML = `Show Answer`;
-            button.addEventListener("click", getAnswer); 
+            button.innerHTML = `Show Answer`             
+            button.addEventListener("click", (event) => {
+                event.target.nextSibling.classList.remove('hidden');
+            }); 
         const answer = document.createElement("p") 
             answer.classList.add("hidden");
             answer.innerHTML = `${card.correct_answer}`;
@@ -49,7 +52,6 @@ function createErrorMessage(errorMes) {
     main.append(section);
    }
    
-function getAnswer(event) {
-    event.target.nextSibling.classList.remove('hidden');;
-    }
-}
+// function getAnswer(event) {
+//     event.target.nextSibling.classList.remove('hidden');
+// }
