@@ -27,6 +27,7 @@ header {
 
 header h1 {
   padding: 25px;
+
 }
 
 header h1 span {
@@ -41,6 +42,7 @@ header h1 span {
   grid-template-columns: repeat(3, 1fr);
   margin: 25px auto;
   width: 75%;
+  
 }
 
 button {
@@ -66,3 +68,44 @@ button:hover {
 .hidden {
   display: none;
 }
+
+/* nav ul {
+  float: right;
+  
+} 
+
+nav ul li {
+  float: left;
+  list-style: none;
+  position: relative;
+
+}
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+}
+
+nav ul li ul {
+  display: none;
+  position: absolute;
+  border-radius: 4px;
+}
+
+nav ul li:hover ul {
+  display: block;
+  
+}
+
+nav ul li ul li a {
+  padding: 8px 14px;
+}
+
+nav ul li ul li a:hover {
+  background-color: lightgrey;
+}
+
+nav ul li ul li {
+  border-radius: 4px;
+} */
+

@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "9.7.0",
+    "cypress": "^12.3.0",
     "cypress-watch-and-reload": "1.10.3",
-    "live-server": "1.1.0"
+    "live-server": "^0.9.1"
   }
 }

@@ -6,18 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trivia Questions</title>
     <link rel="stylesheet" href="style.css" />
+    <script defer src="./thejs.js"></script>
   </head>
   <body>
     <header>
-      <h1>Trivia Questions</h1>
+      <h1>Trivia Questions</h1> 
     </header>
-    <section class="centered">
+    <section class="centered">      
       <form>
-        <button type="submit">Get New Questions</button>
+        <button type="submit"> Get A Random Question</button>
       </form>
+      <select>
+        <option> Pick a specific question </option>
+      </select>
+      <!-- <section>
+        <nav>
+          <ul>
+            <li><a href="#">Difficulty</a>
+              <ul>
+                <li><a href="#">Easy</a></li>
+                <li><a href="#">Medium</a></li>
+                <li><a href="#">Hard</a></li>
+              </ul>          
+            </li>          
+          </ul>
+        </nav>
+      </section> -->
     </section>
     <main class="centered">
-      <!-- Your `.card` elements should show up here. -->
+      <article class="card">
+        <h2>Category</h2>
+        <p class="question">Question</p>
+        <p class="difficulty"> Difficulty </p>
+        <button class="answer-btn">Show Answer</button>
+        <p class="hidden" onclick="onclick()">CORRECT ANSWER</p>
+      </article> 
     </main>
   </body>
 </html>
